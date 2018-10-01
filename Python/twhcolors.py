@@ -1,28 +1,32 @@
 ##############################################################################
 #Purpose
-#Displaying a simple window
 ##############################################################################
 
 ##############################################################################
 #libraries
 ##############################################################################
-import pygame, sys
-from pygame.locals import *
-from math import *
-import twhcolors
 
 ##############################################################################
 #functions
 ##############################################################################
 
 ##############################################################################
-#constants (variable names written with upper case)
+#constants
 ##############################################################################
-FPS=40 #Frames pr second
+# set up the color tuples
+BLACK   = (  0,   0,   0)
+WHITE   = (255, 255, 255)
+RED     = (255,   0,   0)
+GREEN   = (  0, 255,   0)
+BLUE    = (  0,   0, 255)
+GRAY    = (128, 128, 128)
+SILVER  = (192, 192, 192)
+YELLOW  = (255, 255,   0)
+CYAN    = (  0, 255, 255)
+MAGENTA = (255,   0, 255)
+PINK    = (255, 200, 200)
 
-#window size
-WIDTH=400
-HEIGHT=420
+COLORCYCLE=[WHITE, RED, GREEN, BLUE, GRAY, SILVER, YELLOW, CYAN, MAGENTA, PINK]
 
 ##############################################################################
 #variables
@@ -31,30 +35,7 @@ HEIGHT=420
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
-
-# set up the window with size and caption
-screen=pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Framework')
-
-#draw background color to blank the screen
-screen.fill(twhcolors.SILVER)
-
-# creates a clock
-clock=pygame.time.Clock()
 
 ##############################################################################
 #main loop
 ##############################################################################
-while True:
-    #limit updates to FPS
-    clock.tick(FPS)
-
-    #get events from the event queue
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-
-    #update display
-    pygame.display.update()

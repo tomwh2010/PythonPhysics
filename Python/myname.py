@@ -1,10 +1,19 @@
 ##############################################################################
+#Purpose
+#Draw a simple string
+##############################################################################
+
+##############################################################################
 #libraries
 ##############################################################################
 import pygame, sys
 from pygame.locals import *
 from math import *
 import twhcolors
+
+##############################################################################
+#functions
+##############################################################################
 
 ##############################################################################
 #constants
@@ -22,14 +31,14 @@ HEIGHT=400
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygam environment
+pygame.init() #initialize the pygame environment
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Framework')
 
 #draw background color to blank the screen
-screen.fill(twhcolors.PINK)
+screen.fill(twhcolors.SILVER)
 
 # creates a clock
 clock=pygame.time.Clock()
@@ -57,8 +66,8 @@ while True:
     strBuffer="My name is Tom"
     #render buffer as picture
     textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
-    #paint picture to screen at location 180,200
-    screen.blit(textsurface,(180,200))
+    #paint picture to screen at location 130,180
+    screen.blit(textsurface,(130,180))
 
     #update display
     pygame.display.update()

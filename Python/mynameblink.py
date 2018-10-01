@@ -1,4 +1,9 @@
 ##############################################################################
+#Purpose
+#Draw a simple blinking string
+##############################################################################
+
+##############################################################################
 #libraries
 ##############################################################################
 import pygame, sys
@@ -7,9 +12,13 @@ from math import *
 import twhcolors
 
 ##############################################################################
+#functions
+##############################################################################
+
+##############################################################################
 #constants
 ##############################################################################
-FPS=40 #Frames pr second
+FPS=4 #Frames pr second
 
 #window size
 WIDTH=400
@@ -25,7 +34,7 @@ TEXTOFF=FPS*2
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygam environment
+pygame.init() #initialize the pygame environment
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -50,7 +59,8 @@ while True:
     clock.tick(FPS)
 
     #draw background color to blank the screen
-    screen.fill(twhcolors.PINK)
+    #I paint the background here instead to blank the screen for each frame
+    screen.fill(twhcolors.SILVER)
 
     #get events from the event queue
     for event in pygame.event.get():
@@ -65,8 +75,8 @@ while True:
         strBuffer="My name is Tom"
         #render buffer as picture
         textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
-        #paint picture to screen at location 180,200
-        screen.blit(textsurface,(180,200))
+        #paint picture to screen at location 130,180
+        screen.blit(textsurface,(130,180))
 
     if i==TEXTOFF:
         i=0

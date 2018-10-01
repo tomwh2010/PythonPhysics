@@ -1,10 +1,18 @@
 ##############################################################################
+#Purpose
+##############################################################################
+
+##############################################################################
 #libraries
 ##############################################################################
 import pygame, sys
 from pygame.locals import *
 from math import *
 import twhcolors
+
+##############################################################################
+#functions
+##############################################################################
 
 ##############################################################################
 #constants
@@ -28,7 +36,7 @@ HEIGHT=500
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygam environment
+pygame.init() #initialize the pygame environment
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -47,7 +55,7 @@ while True:
     clock.tick(FPS)
 
     #draw background color to blank the screen
-    screen.fill(twhcolors.PINK)
+    screen.fill(twhcolors.SILVER)
 
     #get events from the event queue
     for event in pygame.event.get():

@@ -1,10 +1,19 @@
 ##############################################################################
+#Purpose
+#Draw different objects
+##############################################################################
+
+##############################################################################
 #libraries
 ##############################################################################
 import pygame, sys
 from pygame.locals import *
 from math import *
 import twhcolors
+
+##############################################################################
+#functions
+##############################################################################
 
 ##############################################################################
 #constants
@@ -26,14 +35,14 @@ HEIGHT=500
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygam environment
+pygame.init() #initialize the pygame environment
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Framework')
 
 #draw background color to blank the screen
-screen.fill(twhcolors.PINK)
+screen.fill(twhcolors.SILVER)
 
 # creates a clock
 clock=pygame.time.Clock()
@@ -58,7 +67,7 @@ while True:
     pygame.draw.rect(screen, twhcolors.YELLOW, (125, 225, 350, 100), FILLSTYLE)
 
     #ellipse(screen, color, coords(top, left, bottom, right), fillstyle
-    pygame.draw.ellipse(screen, twhcolors.BLUE, (325, 25, 450, 100), FILLSTYLE)
+    pygame.draw.ellipse(screen, twhcolors.BLUE, (325, 25, 450, 100), 3)
 
     #polygon(screen, color, pointlist((x, y)...), fillstyle
     pointlist_1 = [(25, 25), (105, 185), (185, 25)]
