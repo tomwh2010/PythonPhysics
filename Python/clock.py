@@ -1,5 +1,5 @@
 ##############################################################################
-#Purpose
+#Description
 #Draw an analog clock
 ##############################################################################
 
@@ -13,16 +13,9 @@ from time import gmtime, strftime, localtime
 import twhcolors
 
 ##############################################################################
-#functions
-##############################################################################
-def drawclockhand(stopx, stopy, center, pendulum):
-    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
-    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
-
-##############################################################################
 #constants
 ##############################################################################
-FPS=40 #Frames pr second
+FPS=4 #Frames pr second
 
 #window size
 WIDTH=400
@@ -37,12 +30,19 @@ LENGTH_MINUTE=190
 LENGTH_SECOND=190
 
 COLOR_HOUR=twhcolors.BLACK
-COLOR_MINUTE=twhcolors.RED
+COLOR_MINUTE=twhcolors.BLACK
 COLOR_SECOND=twhcolors.BLUE
 
 ##############################################################################
 #variables
 ##############################################################################
+
+##############################################################################
+#functions
+##############################################################################
+def drawclockhand(stopx, stopy, center, pendulum):
+    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
+    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
 
 ##############################################################################
 #initial code
@@ -104,5 +104,5 @@ while True:
     textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
     screen.blit(textsurface,(10,400))
 
-    #update display and wait
-    pygame.display.update()
+    #update display
+    pygame.display.flip()

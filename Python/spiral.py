@@ -1,5 +1,5 @@
 ##############################################################################
-#Purpose
+#Description
 ##############################################################################
 
 ##############################################################################
@@ -11,22 +11,6 @@ from math import *
 import twhcolors
 
 ##############################################################################
-#functions
-##############################################################################
-
-##############################################################################
-#functions
-##############################################################################
-def reset():
-    global x1, y1, x2, y2, angle, length
-    x1=400
-    y1=400
-    x2=400
-    y2=400
-    angle=0
-    length=1
-
-##############################################################################
 #constants
 ##############################################################################
 LINESTYLE=2
@@ -34,8 +18,10 @@ LINESTYLE=2
 FPS=50 #Frames pr second
 
 #window size
-WIDTH=800
-HEIGHT=800
+WIDTH=600
+HEIGHT=600
+CENTERX=WIDTH//2
+CENTERY=HEIGHT//2
 
 ##############################################################################
 #variables
@@ -44,14 +30,28 @@ x1=0
 y1=0
 x2=0
 y2=0
-angle=0
-length=1
+angle=0.0
+length=0.1
 
 #change these two to change the spiral size
 deltalength=0.1
-deltaangle=6
+deltaangle=6.0
 
-colorindex=0
+##############################################################################
+#functions
+##############################################################################
+
+##############################################################################
+#functions
+##############################################################################
+def reset():
+    global x1, y1, x2, y2, angle, length
+    x1=CENTERX
+    y1=CENTERY
+    x2=CENTERX
+    y2=CENTERY
+    angle=0
+    length=1
 
 ##############################################################################
 #initial code
@@ -97,15 +97,11 @@ while True:
 
     #if reached the edge then reset coords and choose new color
     if x1<0 or x1>WIDTH or x2<0 or x2>WIDTH or y1<0 or y1>HEIGHT or y2<0 or y2>HEIGHT:
-        colorindex+=1
+        twhcolors.cyclecolor()
         reset()
 
-    # go back to WHITE
-    if colorindex==9:
-        colorindex=0
-
-    pygame.draw.line(screen, twhcolors.COLORCYCLE[colorindex], (x1, y1), (x2, y2), LINESTYLE)
-    pygame.draw.circle(screen, twhcolors.COLORCYCLE[colorindex], (x2, y2), 5, 0)
+    pygame.draw.line(screen, twhcolors.getColor(), (x1, y1), (x2, y2), LINESTYLE)
+    pygame.draw.circle(screen, twhcolors.getColor(), (x2, y2), 5, 0)
 
     #update display
-    pygame.display.update()
+    pygame.display.flip()

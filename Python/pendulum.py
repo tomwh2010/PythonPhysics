@@ -1,5 +1,5 @@
 ##############################################################################
-#Purpose
+#Description
 ##############################################################################
 
 ##############################################################################
@@ -9,14 +9,6 @@ import pygame, sys
 from pygame.locals import *
 from math import *
 import twhcolors
-
-##############################################################################
-#functions
-##############################################################################
-def drawpendulum(stopx, stopy, center, pendulum, ball):
-    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
-    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
-    pygame.draw.circle(screen, ball, (stopx, stopy), 5, 0)
 
 ##############################################################################
 #constants
@@ -55,6 +47,14 @@ velocity=STARTVELOCITY 			# start pendulum at rest
 #delta time and initial time
 dt=0.1
 t=0.
+
+##############################################################################
+#functions
+##############################################################################
+def drawpendulum(stopx, stopy, center, pendulum, ball):
+    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
+    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
+    pygame.draw.circle(screen, ball, (stopx, stopy), 5, 0)
 
 ##############################################################################
 #initial code
@@ -114,5 +114,5 @@ while True:
     #draw new pendulum
     drawpendulum(stopx, stopy, twhcolors.BLACK, twhcolors.BLUE, twhcolors.RED)
 
-    #update display and wait
-    pygame.display.update()
+    #update display
+    pygame.display.flip()

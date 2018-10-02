@@ -1,5 +1,5 @@
 ##############################################################################
-#Purpose
+#Description
 ##############################################################################
 
 ##############################################################################
@@ -11,10 +11,6 @@ from math import *
 import twhcolors
 
 ##############################################################################
-#functions
-##############################################################################
-
-##############################################################################
 #constants
 ##############################################################################
 LINESTYLE=2
@@ -22,22 +18,26 @@ LINESTYLE=2
 FPS=20 #Frames pr second
 
 #window size
-WIDTH=800
-HEIGHT=800
+WIDTH=600
+HEIGHT=600
+
 STEP=10
 
 ##############################################################################
 #variables
 ##############################################################################
 x1=0
-y1=400
-x2=400
+y1=300
+x2=300
 y2=0
 dx1=0
 dy1=-STEP
 dx2=STEP
 dy2=0
-colorindex=0
+
+##############################################################################
+#functions
+##############################################################################
 
 ##############################################################################
 #initial code
@@ -68,13 +68,11 @@ while True:
             sys.exit()
 
     #line(screen, color, coords1(x, y), coords2(x, y), fillstyle
-    pygame.draw.line(screen, twhcolors.COLORCYCLE[colorindex], (x1, y1), (x2, y2), LINESTYLE)
-
-    #update display
-    pygame.display.update()
+    pygame.draw.line(screen, twhcolors.getColor(), (x1, y1), (x2, y2), LINESTYLE)
 
     #update steps
-    colorindex+=1
+    twhcolors.cyclecolor()
+
     if x1==0 and y1==0:
         dx1=STEP
         dy1=0
@@ -99,10 +97,10 @@ while True:
         dx2=STEP
         dy2=0
 
-    if colorindex==9:
-        colorindex=0
-
     x1+=dx1
     y1+=dy1
     x2+=dx2
     y2+=dy2
+
+    #update display
+    pygame.display.flip()
