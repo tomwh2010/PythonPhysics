@@ -1,5 +1,7 @@
 ##############################################################################
 #Description
+#moving object horizontally
+#i.e. change x
 ##############################################################################
 
 ##############################################################################
@@ -21,12 +23,18 @@ FILLSTYLE=0
 FPS=40 #Frames pr second
 
 #window size
-WIDTH=800
-HEIGHT=500
+WIDTH=600
+HEIGHT=600
+
+BALLSIZE=10
+BOUNCEDISTANCE=8
+DELTA=5
 
 ##############################################################################
 #variables
 ##############################################################################
+delta_x=DELTA
+myball=[BOUNCEDISTANCE, HEIGHT//2]
 
 ##############################################################################
 #functions
@@ -44,8 +52,6 @@ pygame.display.set_caption('Framework')
 # creates a clock
 clock=pygame.time.Clock()
 
-myball=[300, 300]
-
 ##############################################################################
 #main loop
 ##############################################################################
@@ -62,30 +68,15 @@ while True:
             pygame.quit()
             sys.exit()
 
-        # if any key is pressed
-        elif event.type==pygame.KEYDOWN:
-            # if the 'up' key is pressed
-            if event.key==pygame.K_UP:
-                # moves the blue rectangle 1 pixel up
-                myball[1]-=10
-
-            # if the 'down' key is pressed
-            elif event.key==pygame.K_DOWN:
-                # moves the blue rectangle 1 pixel down
-                myball[1]+=10
-
-            # if the 'left' key is pressed
-            elif event.key==pygame.K_LEFT:
-                # moves the blue rectangle 1 pixel to the left
-                myball[0]-=10
-
-            # if the 'right' key is pressed
-            elif event.key==pygame.K_RIGHT:
-                # moves the blue rectangle 1 pixel to the right
-                myball[0]+=10
-
     #circle(screen, color, coords(x,y), radius, fillstyle
-    pygame.draw.circle(screen, SHAPE_COLOR, myball, 40, FILLSTYLE)
+    pygame.draw.circle(screen, SHAPE_COLOR, myball, BALLSIZE, FILLSTYLE)
+
+    #update position
+    myball[0]+=delta_x
+    if myball[0]>=(WIDTH-BOUNCEDISTANCE):
+        delta_x=-DELTA
+    if myball[0]<=BOUNCEDISTANCE:
+        delta_x=DELTA
 
     #update display
     pygame.display.flip()

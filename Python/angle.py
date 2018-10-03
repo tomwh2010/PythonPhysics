@@ -1,5 +1,7 @@
 ##############################################################################
 #Description
+#moving object at angle
+#i.e. change y and x
 ##############################################################################
 
 ##############################################################################
@@ -21,12 +23,20 @@ FILLSTYLE=0
 FPS=40 #Frames pr second
 
 #window size
-WIDTH=800
-HEIGHT=500
+WIDTH=600
+HEIGHT=600
+
+BALLSIZE=10
+BOUNCEDISTANCE=8
+DELTA_X=6
+DELTA_Y=4
 
 ##############################################################################
 #variables
 ##############################################################################
+delta_y=DELTA_Y
+delta_x=DELTA_X
+myball=[10, 100]
 
 ##############################################################################
 #functions
@@ -44,7 +54,8 @@ pygame.display.set_caption('Framework')
 # creates a clock
 clock=pygame.time.Clock()
 
-myball=[300, 300]
+#draw background color to blank the screen
+screen.fill(twhcolors.SILVER)
 
 ##############################################################################
 #main loop
@@ -53,39 +64,26 @@ while True:
     #limit updates to FPS
     clock.tick(FPS)
 
-    #draw background color to blank the screen
-    screen.fill(twhcolors.SILVER)
-
     #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
-        # if any key is pressed
-        elif event.type==pygame.KEYDOWN:
-            # if the 'up' key is pressed
-            if event.key==pygame.K_UP:
-                # moves the blue rectangle 1 pixel up
-                myball[1]-=10
-
-            # if the 'down' key is pressed
-            elif event.key==pygame.K_DOWN:
-                # moves the blue rectangle 1 pixel down
-                myball[1]+=10
-
-            # if the 'left' key is pressed
-            elif event.key==pygame.K_LEFT:
-                # moves the blue rectangle 1 pixel to the left
-                myball[0]-=10
-
-            # if the 'right' key is pressed
-            elif event.key==pygame.K_RIGHT:
-                # moves the blue rectangle 1 pixel to the right
-                myball[0]+=10
-
     #circle(screen, color, coords(x,y), radius, fillstyle
-    pygame.draw.circle(screen, SHAPE_COLOR, myball, 40, FILLSTYLE)
+    pygame.draw.circle(screen, SHAPE_COLOR, myball, BALLSIZE, FILLSTYLE)
+
+    #update position
+    myball[0]+=delta_x
+    myball[1]+=delta_y
+    if myball[1]>=(HEIGHT-BOUNCEDISTANCE):
+        delta_y=-DELTA_Y
+    if myball[1]<=BOUNCEDISTANCE:
+        delta_y=DELTA_Y
+    if myball[0]>=(WIDTH-BOUNCEDISTANCE):
+        delta_x=-DELTA_X
+    if myball[0]<=BOUNCEDISTANCE:
+        delta_x=DELTA_X
 
     #update display
     pygame.display.flip()
