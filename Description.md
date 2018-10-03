@@ -1,8 +1,8 @@
 # Description of each python file
 
 ## Initial
-* [convention.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/convention.py "convention.py") 
-* frame.py
+* [convention.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/convention.py "convention.py") - Outline of the source files
+* [frame.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/frame.py "frame.py") - Displaying your first pygame window
 * myname.py
 * mynameblink.py
 * objects.py
