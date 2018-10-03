@@ -29,7 +29,7 @@ G=9.81
 
 #Start angle and velocity
 #0=up, 90=right, 180=down, 270=left
-STARTANGLE=355
+STARTANGLE=5 #Try different angles to see what happens
 
 #>0 =>counter-clockwise
 #<0 =>clockwise
@@ -37,24 +37,24 @@ STARTANGLE=355
 #higher initial velocity=>higher speed
 STARTVELOCITY=0
 
+#Try this instead. You will get a clockwise motion where the pendulum will
+#ever so slightly make full rotation
+#STARTANGLE=5
+#STARTVELOCITY=-0.002
+
 ##############################################################################
 #variables
 ##############################################################################
 # Physical properties and initial conditions for pendulum
 theta=radians(STARTANGLE) 		# initial upper angle (from vertical)
-velocity=STARTVELOCITY 			# start pendulum at rest
+velocity=STARTVELOCITY 			# start pendulum at start
 
-#delta time and initial time
+#delta time
 dt=0.1
-t=0.
 
 ##############################################################################
 #functions
 ##############################################################################
-def drawpendulum(stopx, stopy, center, pendulum, ball):
-    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
-    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
-    pygame.draw.circle(screen, ball, (stopx, stopy), 5, 0)
 
 ##############################################################################
 #initial code
@@ -103,16 +103,15 @@ while True:
     if STARTVELOCITY>0:
         currentangle=360-currentangle
 
-    #update time
-    t=t+dt
-
     #write text to screen
     strBuffer="Current angle: "+str(int(currentangle))+" Velocity: "+str(round(abs(velocity)*100, 2))
     textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
     screen.blit(textsurface,(10,400))
 
     #draw new pendulum
-    drawpendulum(stopx, stopy, twhcolors.BLACK, twhcolors.BLUE, twhcolors.RED)
+    pygame.draw.line(screen, twhcolors.BLUE, (STARTX, STARTY), (stopx, stopy))
+    pygame.draw.circle(screen, twhcolors.RED, (stopx, stopy), 5, 0)
+    pygame.draw.circle(screen, twhcolors.BLACK, (STARTX, STARTY), 5, 0)
 
     #update display
     pygame.display.flip()
