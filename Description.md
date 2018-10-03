@@ -1,7 +1,7 @@
 # Description of each python file
 
 ## Initial
-* [link](http://example.com "Title") convention.py
+* [convention.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/convention.py "convention.py") 
 * frame.py
 * myname.py
 * mynameblink.py
