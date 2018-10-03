@@ -40,9 +40,6 @@ COLOR_SECOND=twhcolors.BLUE
 ##############################################################################
 #functions
 ##############################################################################
-def drawclockhand(stopx, stopy, center, pendulum):
-    pygame.draw.circle(screen, center, (STARTX, STARTY), 5, 0)
-    pygame.draw.line(screen, pendulum, (STARTX, STARTY), (stopx, stopy))
 
 ##############################################################################
 #initial code
@@ -95,9 +92,10 @@ while True:
     stopy_second=STARTY-int(LENGTH_SECOND*cos(theta_second))
 
     #paint clock hands
-    drawclockhand(stopx_hour,   stopy_hour,   twhcolors.BLACK, COLOR_HOUR)
-    drawclockhand(stopx_minute, stopy_minute, twhcolors.BLACK, COLOR_MINUTE)
-    drawclockhand(stopx_second, stopy_second, twhcolors.BLACK, COLOR_SECOND)
+    pygame.draw.line(screen, COLOR_HOUR, (STARTX, STARTY), (stopx_hour, stopy_hour))
+    pygame.draw.line(screen, COLOR_MINUTE, (STARTX, STARTY), (stopx_minute, stopy_minute))
+    pygame.draw.line(screen, COLOR_SECOND, (STARTX, STARTY), (stopx_second, stopy_second))
+    pygame.draw.circle(screen, twhcolors.BLACK, (STARTX, STARTY), 5, 0)
 
     #write text to screen
     strBuffer="Current time: "+strftime("%a, %d %b %Y %H:%M:%S +0000", localtime())
