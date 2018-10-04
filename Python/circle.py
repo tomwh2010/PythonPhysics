@@ -20,11 +20,11 @@ FPS=4 #Frames pr second
 WIDTH=400
 HEIGHT=400
 
-#center x,y and rod length
+#center x,y and radius
 STARTX=WIDTH//2
 STARTY=HEIGHT//2
 
-LENGTH=190
+RADIUS=190
 
 #change to negative number for counterclockwise
 DELTA=5
@@ -34,7 +34,7 @@ DELTA=5
 ##############################################################################
 angle=0
 stopx=STARTY
-stopy=STARTY-LENGTH
+stopy=STARTY-RADIUS
 
 ##############################################################################
 #functions
@@ -76,8 +76,8 @@ while True:
     theta=radians(angle)
 
     #calculate stopx, stopy
-    stopx=STARTX+int(LENGTH*sin(theta))
-    stopy=STARTY-int(LENGTH*cos(theta))
+    stopx=STARTX+int(RADIUS*sin(theta))
+    stopy=STARTY-int(RADIUS*cos(theta))
 
     #update display
     pygame.display.flip()

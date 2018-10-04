@@ -21,13 +21,13 @@ FPS=4 #Frames pr second
 WIDTH=400
 HEIGHT=420
 
-#center x,y and rod length
+#center x,y and radius
 STARTX=200
 STARTY=200
 
-LENGTH_HOUR=150
-LENGTH_MINUTE=190
-LENGTH_SECOND=190
+RADIUS_HOUR=150
+RADIUS_MINUTE=190
+RADIUS_SECOND=190
 
 COLOR_HOUR=twhcolors.BLACK
 COLOR_MINUTE=twhcolors.BLACK
@@ -82,14 +82,14 @@ while True:
     theta_hour=radians((theclock[3]+theclock[4]/60)*360/12)
 
     #calculate stopx, stopy for each hand
-    stopx_hour=STARTX+int(LENGTH_HOUR*sin(theta_hour))
-    stopy_hour=STARTY-int(LENGTH_HOUR*cos(theta_hour))
+    stopx_hour=STARTX+int(RADIUS_HOUR*sin(theta_hour))
+    stopy_hour=STARTY-int(RADIUS_HOUR*cos(theta_hour))
 
-    stopx_minute=STARTX+int(LENGTH_MINUTE*sin(theta_minute))
-    stopy_minute=STARTY-int(LENGTH_MINUTE*cos(theta_minute))
+    stopx_minute=STARTX+int(RADIUS_MINUTE*sin(theta_minute))
+    stopy_minute=STARTY-int(RADIUS_MINUTE*cos(theta_minute))
 
-    stopx_second=STARTX+int(LENGTH_SECOND*sin(theta_second))
-    stopy_second=STARTY-int(LENGTH_SECOND*cos(theta_second))
+    stopx_second=STARTX+int(RADIUS_SECOND*sin(theta_second))
+    stopy_second=STARTY-int(RADIUS_SECOND*cos(theta_second))
 
     #paint clock hands
     pygame.draw.line(screen, COLOR_HOUR, (STARTX, STARTY), (stopx_hour, stopy_hour))

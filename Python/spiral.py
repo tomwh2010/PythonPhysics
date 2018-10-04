@@ -23,6 +23,10 @@ HEIGHT=600
 CENTERX=WIDTH//2
 CENTERY=HEIGHT//2
 
+#change these two to change the spiral size
+DELTARADIUS=0.1
+DELTAANGLE=6.0
+
 ##############################################################################
 #variables
 ##############################################################################
@@ -31,11 +35,7 @@ y1=0
 x2=0
 y2=0
 angle=0.0
-length=0.1
-
-#change these two to change the spiral size
-deltalength=0.1
-deltaangle=6.0
+radius=0.1
 
 ##############################################################################
 #functions
@@ -45,13 +45,13 @@ deltaangle=6.0
 #functions
 ##############################################################################
 def reset():
-    global x1, y1, x2, y2, angle, length
+    global x1, y1, x2, y2, angle, radius
     x1=CENTERX
     y1=CENTERY
     x2=CENTERX
     y2=CENTERY
     angle=0
-    length=1
+    radius=1
 
 ##############################################################################
 #initial code
@@ -85,15 +85,15 @@ while True:
             sys.exit()
 
     #update coords
-    angle+=deltaangle
-    length+=deltalength
+    angle+=DELTAANGLE
+    radius+=DELTARADIUS
     if angle==360:
         angle=0
     theta=radians(angle)
     x1=x2
     y1=y2
-    x2=x1+int(length*sin(theta))
-    y2=y1-int(length*cos(theta))
+    x2=x1+int(radius*sin(theta))
+    y2=y1-int(radius*cos(theta))
 
     #if reached the edge then reset coords and choose new color
     if x1<0 or x1>WIDTH or x2<0 or x2>WIDTH or y1<0 or y1>HEIGHT or y2<0 or y2>HEIGHT:

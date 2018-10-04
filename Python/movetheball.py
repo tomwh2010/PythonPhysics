@@ -7,7 +7,6 @@
 ##############################################################################
 import pygame, sys
 from pygame.locals import *
-from math import *
 import twhcolors
 
 ##############################################################################
@@ -85,7 +84,7 @@ while True:
                 myball[0]+=10
 
     #circle(screen, color, coords(x,y), radius, fillstyle
-    pygame.draw.circle(screen, SHAPE_COLOR, myball, 40, FILLSTYLE)
+    pygame.draw.circle(screen, SHAPE_COLOR, myball, 10, FILLSTYLE)
 
     #update display
     pygame.display.flip()

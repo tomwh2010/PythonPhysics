@@ -19,10 +19,10 @@ FPS=25 #Frames pr second
 WIDTH=400
 HEIGHT=420
 
-#center x,y and rod length
+#center x,y and radius
 STARTX=200
 STARTY=200
-LENGTH=190
+RADIUS=190
 
 # gravity
 G=9.81
@@ -89,14 +89,14 @@ while True:
             sys.exit()
 
     # Calculate accelleration due to gravity
-    accel=-(G/LENGTH)*sin(theta)
+    accel=-(G/RADIUS)*sin(theta)
     # Change velocity according to accelleration
-    velocity+=accel*dt**2
+    velocity+=accel*dt
     # Change angle according to (updated) velocity
     theta-=velocity
     #calculate new position for the ball
-    stopx=STARTX+int(LENGTH*sin(theta))
-    stopy=STARTY-int(LENGTH*cos(theta))
+    stopx=STARTX+int(RADIUS*sin(theta))
+    stopy=STARTY-int(RADIUS*cos(theta))
 
     #calculate angle in degrees
     currentangle=abs(degrees(theta))%360

@@ -19,15 +19,15 @@ FPS=25 #Frames pr second
 WIDTH=800
 HEIGHT=800
 
-#center x,y and rod length
+#center x,y and radius
 CENTERX=400
 CENTERY=400
 
 #change these 4 constants to get som wierd patterns
 STARTVELOCITY=1
-STARTLENGTH=1
+STARTRADIUS=1
 DELTAVELOCITY=0.002
-DELTALENGTH=1.03
+DELTARADIUS=1.03
 
 ##############################################################################
 #variables
@@ -35,7 +35,7 @@ DELTALENGTH=1.03
 # Physical properties and initial conditions for pendulum
 theta=radians(0) 		# initial upper angle (from vertical)
 velocity=STARTVELOCITY 			# start pendulum at rest
-length=STARTLENGTH
+radius=STARTRADIUS
 startx=CENTERX
 starty=CENTERY
 
@@ -76,15 +76,15 @@ while True:
             pygame.quit()
             sys.exit()
 
-    # Calculate new length
-    length*=DELTALENGTH
+    # Calculate new radius
+    radius*=DELTARADIUS
     # Change velocity
     velocity+=DELTAVELOCITY
     # Change angle according to (updated) velocity
     theta-=velocity
     #calculate new position for the ball
-    stopx=CENTERX+int(length*sin(theta))
-    stopy=CENTERY-int(length*cos(theta))
+    stopx=CENTERX+int(radius*sin(theta))
+    stopy=CENTERY-int(radius*cos(theta))
 
     #draw new pendulum
     pygame.draw.circle(screen, twhcolors.BLACK, (stopx, stopy), 2, 0)
