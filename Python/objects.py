@@ -62,8 +62,8 @@ while True:
     #circle(screen, color, coords(x, y), radius, fillstyle
     pygame.draw.circle(screen, twhcolors.RED, (405, 405), 40, FILLSTYLE)
 
-    #rect(screen, color, coords(top, left, bottom, right), fillstyle
-    pygame.draw.rect(screen, twhcolors.YELLOW, (125, 225, 350, 100), FILLSTYLE)
+    #rect(screen, color, coords(top, left, width, height), fillstyle
+    pygame.draw.rect(screen, twhcolors.YELLOW, (125, 225, 100, 100), FILLSTYLE)
 
     #ellipse(screen, color, coords(top, left, bottom, right), fillstyle
     pygame.draw.ellipse(screen, twhcolors.BLUE, (325, 25, 450, 100), 3)

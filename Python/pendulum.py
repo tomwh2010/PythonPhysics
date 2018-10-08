@@ -91,7 +91,7 @@ while True:
     # Calculate accelleration due to gravity
     accel=-(G/RADIUS)*sin(theta)
     # Change velocity according to accelleration
-    velocity+=accel*dt
+    velocity+=accel*dt**2
     # Change angle according to (updated) velocity
     theta-=velocity
     #calculate new position for the ball

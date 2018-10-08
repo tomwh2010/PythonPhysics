@@ -27,7 +27,7 @@ STARTY=HEIGHT//2
 RADIUS=190
 
 #change to negative number for counterclockwise
-DELTA=5
+DELTA=-2
 
 ##############################################################################
 #variables
@@ -51,6 +51,7 @@ pygame.display.set_caption('Clock')
 
 # creates a clock
 clock=pygame.time.Clock()
+print(str(radians(0)))
 
 ##############################################################################
 #main loop
