@@ -66,7 +66,7 @@ while True:
     #render buffer as picture
     textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
     #paint picture to screen at location 130,180
-    screen.blit(textsurface,(130,180))
+    screen.blit(textsurface,(130, 180))
 
     #update display
     pygame.display.flip()

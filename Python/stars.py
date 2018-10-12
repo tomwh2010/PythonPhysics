@@ -28,45 +28,57 @@ HEIGHT=600
 CENTERX=WIDTH//2
 CENTERY=HEIGHT//2
 
-BALLSIZE=10
-BOUNCEDISTANCE=8
-DELTA_X=6
-DELTA_Y=4
+STARDELTA=1
+CHANCE=5
+STARS0=50
 
 ##############################################################################
 #variables
 ##############################################################################
-delta_y=DELTA_Y
-delta_x=DELTA_X
-myball=[10, 100]
-animation=True
 stars=[]
 
 ##############################################################################
 #functions
 ##############################################################################
 def generatestars0():
-    N=1000
+    N=STARS0
     for i in range(N):
-        x=random.randint(0, WIDTH)-CENTERX
-        y=random.randint(0, HEIGHT)-CENTERY
-        r=(x**2+y**2)**0.5
-        theta=1
-        star=[x, y]
+        r=random.randint(0, 800)
+        theta=random.randint(0, 359)
+        star=[r, theta]
         stars.append(star)
 
 def drawstars():
-    for i in stars:
-        pygame.draw.circle(screen, twhcolors.WHITE, (i[0], i[1]), 3, FILLSTYLE)
+    for index, element in enumerate(stars):
+        x=CENTERX+int(element[0]*cos(element[1]))
+        y=CENTERY+int(element[0]*sin(element[1]))
+        if x<0 or x>WIDTH or y<0 or y>HEIGHT:
+            stars.pop(index)
+        else:
+            pygame.draw.circle(screen, twhcolors.WHITE, (x, y), 3, FILLSTYLE)
+
+def drawinfo():
+    pygame.draw.rect(screen, twhcolors.BLACK, (WIDTH-130, HEIGHT-40, 200, 100), FILLSTYLE)
+    #create text buffer
+    strBuffer="Stars #"+str(len(stars))
+    #render buffer as picture
+    textsurface=myfont.render(strBuffer, 1, twhcolors.WHITE)
+    #paint picture to screen at location 130,180
+    screen.blit(textsurface,(WIDTH-110, HEIGHT-30))
+
 
 def fly():
-    #calculate theta for each star
+    #increase r for each star by STARDELTA
     #move outward
-    x=1
-    """
-    x = r × cos( θ )
-    y = r × sin( θ )
-    """
+    for i in stars:
+        i[0]+=STARDELTA
+
+    #add a star
+    doit=random.randint(0,100)
+    if doit<CHANCE:
+        theta=random.randint(0, 359)
+        star=[0, theta]
+        stars.append(star)
 ##############################################################################
 #initial code
 ##############################################################################
@@ -78,6 +90,12 @@ pygame.display.set_caption('Framework')
 
 # creates a clock
 clock=pygame.time.Clock()
+
+# you have to call this at the start if you want to use this module.
+pygame.font.init()
+
+#choose font for later use
+myfont=pygame.font.SysFont('Times New Roman', 24)
 
 generatestars0()
 
@@ -93,11 +111,13 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
-    if animation:
-        #draw background color to blank the screen
-        screen.fill(twhcolors.BLACK)
 
-        drawstars()
+    #draw background color to blank the screen
+    screen.fill(twhcolors.BLACK)
+
+    drawstars()
+    drawinfo()
+    fly()
 
     #update display
     pygame.display.flip()
