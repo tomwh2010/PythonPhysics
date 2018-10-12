@@ -13,7 +13,7 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
-FPS=25 #Frames pr second
+FPS=15 #Frames pr second
 
 #window size
 WIDTH=400
@@ -91,7 +91,7 @@ while True:
     # Calculate accelleration due to gravity
     accel=-(G/RADIUS)*sin(theta)
     # Change velocity according to accelleration
-    velocity+=accel*dt**2
+    velocity+=accel*dt
     # Change angle according to (updated) velocity
     theta-=velocity
     #calculate new position for the ball

@@ -22,20 +22,25 @@ LINESTYLE=1
 FPS=40 #Frames pr second
 
 #window size
-WIDTH=1100
-HEIGHT=700
+WIDTH=800
+HEIGHT=500
 
 # gravity
 G=9.81
+M=0.5 #mass in kg
+K=0.1 #air resistance in Nss/m/m
 
 #initial velocity
 STARTVELOCITY=.1
+
+#fraction height
+DAMPER=0.85
 
 #inital x-position
 XPOS0=50.0
 
 #
-XFORWARDMOTION=2
+XFORWARDMOTION=0.0
 
 ##############################################################################
 #variables
@@ -44,10 +49,6 @@ velocity=STARTVELOCITY
 direction=1.0 #start with falling down
 ypos=10.0 #inital y-position
 xpos=XPOS0
-yposlow=ypos
-#fraction height
-damper=0.85
-damperdamper=1.05
 
 #delta time
 dt=0.1
@@ -71,7 +72,7 @@ pygame.display.set_caption('Framework')
 # creates a clock
 clock=pygame.time.Clock()
 
-screen.fill(twhcolors.SILVER)
+#screen.fill(twhcolors.SILVER)
 ##############################################################################
 #main loop
 ##############################################################################
@@ -80,7 +81,7 @@ while True:
     clock.tick(FPS)
 
     #draw background color to blank the screen
-    #screen.fill(twhcolors.SILVER)
+    screen.fill(twhcolors.SILVER)
 
     #get events from the event queue
     for event in pygame.event.get():
@@ -95,29 +96,25 @@ while True:
 
     if animation:
         xpos+=XFORWARDMOTION
-        #calculate new position for the ball
+        acceleration=G-K*velocity**2/M
+        velocity=velocity+acceleration*dt
         ypos+=direction*velocity
 
         # Change velocity according to accelleration
-        velocity+=direction*G*dt
+#        velocity+=direction*G*dt
 
         #if the ball has lost upward motion
         if velocity<0.01:
             velocity=0.0
             direction=1.0
-            yposlow=ypos
-            damper/=damperdamper
 
         #if we hit rock bottom then change to up
-        if ypos>676.0:
-            ypos=676.0
-            if abs(ypos-yposlow)<1:
-                animation=False
-            else:
-                direction=-1
-                velocity*=damper
+        if ypos>=476.0:
+            ypos=476.0
+            direction=-1.0
+            velocity=velocity*DAMPER
 
-        print(str(round(yposlow, 2)), str(round(ypos, 2)), str(round(direction, 1)), str(round(velocity, 2)))
+        print(str(round(acceleration, 2)), str(round(direction, 1)), str(round(velocity, 2)), str(round(ypos, 2)))
 
     #circle(screen, color, coords(x,y), radius, fillstyle
     pygame.draw.circle(screen, SHAPE_COLOR, (int(xpos), int(ypos)), 5, FILLSTYLE)

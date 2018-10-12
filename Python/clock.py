@@ -92,8 +92,8 @@ while True:
     stopy_second=STARTY-int(RADIUS_SECOND*cos(theta_second))
 
     #paint clock hands
-    pygame.draw.line(screen, COLOR_HOUR, (STARTX, STARTY), (stopx_hour, stopy_hour))
-    pygame.draw.line(screen, COLOR_MINUTE, (STARTX, STARTY), (stopx_minute, stopy_minute))
+    pygame.draw.line(screen, COLOR_HOUR, (STARTX, STARTY), (stopx_hour, stopy_hour), 3)
+    pygame.draw.line(screen, COLOR_MINUTE, (STARTX, STARTY), (stopx_minute, stopy_minute), 3)
     pygame.draw.line(screen, COLOR_SECOND, (STARTX, STARTY), (stopx_second, stopy_second))
     pygame.draw.circle(screen, twhcolors.BLACK, (STARTX, STARTY), 5, 0)
 
