@@ -37,7 +37,7 @@ DELTA_WIRE=5
 ##############################################################################
 #variables
 ##############################################################################
-cranearms=[[200, 45], [150, 90], [100, 135], [30]] #radius, theta
+cranearms=[[200, 45, 0, 0], [150, 90, 0, 0], [100, 135, 0, 0], [30, 0, 0, 0], [0, 0, 0, 0]] #radius, theta, x, y
 car_left=FAR_LEFT
 
 ##############################################################################
@@ -82,32 +82,69 @@ def drawcrane():
     global cranearms, screen
 
     #draw arm 1
-    crane_x1=car_left+CRANE_XOFFSET+int(cranearms[0][0]*sin(radians(cranearms[0][1])))
-    crane_y1=CRANE_Y0-int(cranearms[0][0]*cos(radians(cranearms[0][1])))
-    pygame.draw.line(screen, twhcolors.BLACK, (car_left+CRANE_XOFFSET, CRANE_Y0), (crane_x1, crane_y1), 5)
+    pygame.draw.line(screen, twhcolors.BLACK, (car_left+CRANE_XOFFSET, CRANE_Y0), (cranearms[0][2], cranearms[0][3]), 5)
 
     #draw arm 2
-    crane_x2=crane_x1+int(cranearms[1][0]*sin(radians(cranearms[1][1])))
-    crane_y2=crane_y1-int(cranearms[1][0]*cos(radians(cranearms[1][1])))
-    pygame.draw.line(screen, twhcolors.BLACK, (crane_x1, crane_y1), (crane_x2, crane_y2), 5)
+    pygame.draw.line(screen, twhcolors.BLACK, (cranearms[0][2], cranearms[0][3]), (cranearms[1][2], cranearms[1][3]), 5)
 
     #draw arm 3
-    crane_x3=crane_x2+int(cranearms[2][0]*sin(radians(cranearms[2][1])))
-    crane_y3=crane_y2-int(cranearms[2][0]*cos(radians(cranearms[2][1])))
-    pygame.draw.line(screen, twhcolors.BLACK, (crane_x2, crane_y2), (crane_x3, crane_y3), 5)
+    pygame.draw.line(screen, twhcolors.BLACK, (cranearms[1][2], cranearms[1][3]), (cranearms[2][2], cranearms[2][3]), 5)
 
     #draw wire
-    crane_x4=crane_x3
-    crane_y4=crane_y3+cranearms[3][0]
-    pygame.draw.line(screen, twhcolors.BLACK, (crane_x3, crane_y3), (crane_x4, crane_y4), 2)
+    pygame.draw.line(screen, twhcolors.BLACK, (cranearms[2][2], cranearms[2][3]), (cranearms[3][2], cranearms[3][3]), 2)
 
     #draw magnetic clamp
-    clamp_left=crane_x4-10
-    clamp_top=crane_y4-10
-    clamp_width=20
-    clamp_height=20
-    pygame.draw.rect(screen, twhcolors.RED, (clamp_left, clamp_top, clamp_width, clamp_height), 0)
+    clampcolor=twhcolors.BLACK
+    if cranearms[4][0]:
+        clampcolor=twhcolors.RED
+    pygame.draw.rect(screen, clampcolor, (cranearms[4][2], cranearms[4][3], 20, 20), 0)
 
+def calculatexy(deltaarm1, deltaarm2, deltaarm3, deltawire, deltacar):
+    global cranearms
+
+
+    #if (cranearms[0][1]-DELTA_ARM)>=ARM_LOW:
+    #    cranearms[0][1]-=DELTA_ARM
+    #    cranearms[1][1]-=DELTA_ARM
+    #    cranearms[2][1]-=DELTA_ARM
+
+    #make a local copy
+    localcranearms=[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    for i in range(5):
+        for j in range(4):
+            localcranearms[i][j]=cranearms[i][j]
+    #arm 1
+    localcranearms[0][2]=car_left+CRANE_XOFFSET+int(localcranearms[0][0]*sin(radians(localcranearms[0][1])))
+    localcranearms[0][3]=CRANE_Y0-int(localcranearms[0][0]*cos(radians(localcranearms[0][1])))
+
+    #arm 2
+    localcranearms[1][2]=localcranearms[0][2]+int(localcranearms[1][0]*sin(radians(localcranearms[1][1])))
+    localcranearms[1][3]=localcranearms[0][3]-int(localcranearms[1][0]*cos(radians(localcranearms[1][1])))
+
+    #arm 3
+    localcranearms[2][2]=localcranearms[1][2]+int(localcranearms[2][0]*sin(radians(localcranearms[2][1])))
+    localcranearms[2][3]=localcranearms[1][3]-int(localcranearms[2][0]*cos(radians(localcranearms[2][1])))
+
+    #wire
+    localcranearms[3][2]=localcranearms[2][2]
+    localcranearms[3][3]=localcranearms[2][3]+localcranearms[3][0]
+
+    #magnetic clamp
+    localcranearms[4][2]=localcranearms[3][2]-10
+    localcranearms[4][3]=localcranearms[3][3]-10
+
+    #check if clamp is too low
+    if (localcranearms[4][3]+20)>HEIGHT:
+        print("We're too low, cancel move")
+        return
+
+    #we're good; copy back
+    for i in range(5):
+        for j in range(4):
+            cranearms[i][j]=localcranearms[i][j]
+
+def drawmousecoords():
+    global screen
     #draw mouse position
     position=pygame.mouse.get_pos()
     strBuffer="Pos x: "+str(position[0])+" y: "+str(position[1])
@@ -136,6 +173,9 @@ pygame.font.init()
 #choose font for later use
 myfont=pygame.font.SysFont('Times New Roman', 24)
 
+#initalize xy for each arm, wire and clamp
+calculatexy()
+
 ##############################################################################
 #main loop
 ##############################################################################
@@ -155,67 +195,100 @@ while True:
         elif event.type==pygame.KEYDOWN:
             if event.key==pygame.K_q:
                 print("Arm1 CCW")
-                if (cranearms[0][1]-DELTA_ARM)>=ARM_LOW:
-                    cranearms[0][1]-=DELTA_ARM
-                    cranearms[1][1]-=DELTA_ARM
-                    cranearms[2][1]-=DELTA_ARM
+                calculatexy(-DELTA_ARM, -DELTA_ARM, -DELTA_ARM, 0, 0)
             elif event.key==pygame.K_w:
                 print("Arm1 CW")
-                if (cranearms[0][1]+DELTA_ARM)<=ARM_HIGH:
-                    cranearms[0][1]+=DELTA_ARM
-                    cranearms[1][1]+=DELTA_ARM
-                    cranearms[2][1]+=DELTA_ARM
+                calculatexy(DELTA_ARM, DELTA_ARM, DELTA_ARM, 0, 0)
 
             elif event.key==pygame.K_a:
                 print("Arm2 CCW")
-                if (cranearms[1][1]-DELTA_ARM)>=(cranearms[0][1]+ARM_LOW):
-                    cranearms[1][1]-=DELTA_ARM
-                    cranearms[2][1]-=DELTA_ARM
+                calculatexy(0, -DELTA_ARM, -DELTA_ARM, 0, 0)
             elif event.key==pygame.K_s:
                 print("Arm2 CW")
-                if (cranearms[1][1]+DELTA_ARM)<=(cranearms[0][1]+ARM_HIGH):
-                    cranearms[1][1]+=DELTA_ARM
-                    cranearms[2][1]+=DELTA_ARM
+                calculatexy(0, DELTA_ARM, DELTA_ARM, 0, 0)
 
             elif event.key==pygame.K_z:
                 print("Arm3 CCW")
-                if (cranearms[2][1]-DELTA_ARM)>=(cranearms[1][1]+ARM_LOW):
-                    cranearms[2][1]-=DELTA_ARM
+                calculatexy(0, 0, -DELTA_ARM, 0, 0)
             elif event.key==pygame.K_x:
                 print("Arm3 CW")
-                if (cranearms[2][1]+DELTA_ARM)<=(cranearms[1][1]+ARM_HIGH):
-                    cranearms[2][1]+=DELTA_ARM
+                calculatexy(0, 0, DELTA_ARM, 0, 0)
 
             elif event.key==pygame.K_e:
                 print("Wire up")
+                calculatexy(0, 0, 0, -DELTA_WIRE, 0)
                 if (cranearms[3][0]-DELTA_WIRE)>=DELTA_WIRE:
                     cranearms[3][0]-=DELTA_WIRE
             elif event.key==pygame.K_r:
                 print("Wire down")
-                if (cranearms[3][0]+DELTA_WIRE)<=50:
-                    cranearms[3][0]+=DELTA_WIRE
+                calculatexy(0, 0, 0, DELTA_WIRE, 0)
 
             elif event.key==pygame.K_d:
                 print("Clamp on")
+                cranearms[4][0]=1
             elif event.key==pygame.K_f:
                 print("Clamp off")
+                cranearms[4][0]=0
 
             #move car left or right
             elif event.key==pygame.K_c:
-                car_left-=DELTA_CAR
-                if car_left<FAR_LEFT:
-                    car_left=FAR_LEFT
+                calculatexy(0, 0, 0, 0, -DELTA_CAR)
             elif event.key==pygame.K_v:
-                car_left+=DELTA_CAR
-                if car_left>FAR_RIGHT:
-                    car_left=FAR_RIGHT
+                calculatexy(0, 0, 0, 0, DELTA_CAR)
 
-            print(cranearms[0][1], cranearms[1][1], cranearms[2][1])
-
+    calculatexy()
     drawcrane()
     drawvehicle()
     drawinstructions()
-
+    drawmousecoords()
 
     #update display
     pygame.display.flip()
+
+"""
+elif event.type==pygame.KEYDOWN:
+    if event.key==pygame.K_q:
+        print("Arm1 CCW")
+        calculatexy(-DELTA_ARM, -DELTA_ARM, -DELTA_ARM, 0, 0, 0)
+    elif event.key==pygame.K_w:
+        print("Arm1 CW")
+        calculatexy(DELTA_ARM, DELTA_ARM, DELTA_ARM, 0, 0, 0)
+
+    elif event.key==pygame.K_a:
+        print("Arm2 CCW")
+        calculatexy(0, -DELTA_ARM, -DELTA_ARM, 0, 0, 0)
+        if (cranearms[1][1]-DELTA_ARM)>=(cranearms[0][1]+ARM_LOW):
+            cranearms[1][1]-=DELTA_ARM
+            cranearms[2][1]-=DELTA_ARM
+    elif event.key==pygame.K_s:
+        print("Arm2 CW")
+        calculatexy(0, DELTA_ARM, DELTA_ARM, 0, 0, 0)
+        if (cranearms[1][1]+DELTA_ARM)<=(cranearms[0][1]+ARM_HIGH):
+            cranearms[1][1]+=DELTA_ARM
+            cranearms[2][1]+=DELTA_ARM
+
+    elif event.key==pygame.K_z:
+        print("Arm3 CCW")
+        if (cranearms[2][1]-DELTA_ARM)>=(cranearms[1][1]+ARM_LOW):
+            cranearms[2][1]-=DELTA_ARM
+    elif event.key==pygame.K_x:
+        print("Arm3 CW")
+        if (cranearms[2][1]+DELTA_ARM)<=(cranearms[1][1]+ARM_HIGH):
+            cranearms[2][1]+=DELTA_ARM
+
+    elif event.key==pygame.K_e:
+        print("Wire up")
+        if (cranearms[3][0]-DELTA_WIRE)>=DELTA_WIRE:
+            cranearms[3][0]-=DELTA_WIRE
+    elif event.key==pygame.K_r:
+        print("Wire down")
+        if (cranearms[3][0]+DELTA_WIRE)<=50:
+            cranearms[3][0]+=DELTA_WIRE
+
+    elif event.key==pygame.K_d:
+        print("Clamp on")
+        cranearms[4][0]=1
+    elif event.key==pygame.K_f:
+        print("Clamp off")
+        cranearms[4][0]=0
+"""
