@@ -43,6 +43,14 @@ myball=[10, 100]
 ##############################################################################
 #functions
 ##############################################################################
+def paintbar(nr, x0, y0, size, direction, extended):
+    width=50+(size-1)*extended*50
+    height=20
+    if direction==1:
+        width, height=height, width
+    pygame.draw.rect(screen, twhcolors.YELLOW, (x0, y0, width, height), FILLSTYLE)
+    #paint nr, size,
+
 
 ##############################################################################
 #initial code
@@ -72,20 +80,10 @@ while True:
             pygame.quit()
             sys.exit()
 
-    #circle(screen, color, coords(x,y), radius, fillstyle
-    pygame.draw.circle(screen, SHAPE_COLOR, myball, BALLSIZE, FILLSTYLE)
 
     #update position
-    myball[0]+=delta_x
-    myball[1]+=delta_y
-    if myball[1]>=(HEIGHT-BOUNCEDISTANCE):
-        delta_y=-DELTA_Y
-    if myball[1]<=BOUNCEDISTANCE:
-        delta_y=DELTA_Y
-    if myball[0]>=(WIDTH-BOUNCEDISTANCE):
-        delta_x=-DELTA_X
-    if myball[0]<=BOUNCEDISTANCE:
-        delta_x=DELTA_X
+    paintbar(1, 100, 50, 3, 0, 1)
+    paintbar(1, 50, 250, 5, 1, 1)
 
     #update display
     pygame.display.flip()
