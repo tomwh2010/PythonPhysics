@@ -51,15 +51,15 @@ def drawgrid():
     for x in range(CELLWIDTH):
         for y in range(CELLHEIGHT):
             if life[x][y]==1:
-                pygame.draw.rect(screen, twhcolors.WHITE, (x*CELLSIZE, y*CELLSIZE, CELLSIZE, CELLSIZE), 0)
+                pygame.draw.rect(screen, twhcolors.BLACK, (x*CELLSIZE, y*CELLSIZE, CELLSIZE, CELLSIZE), 0)
 
     #horizontal lines
     for i in range(CELLWIDTH):
-        pygame.draw.line(screen, twhcolors.BLACK, (0, i*CELLSIZE), (WIDTH, i*CELLSIZE), 1)
+        pygame.draw.line(screen, twhcolors.GRAY, (0, i*CELLSIZE), (WIDTH, i*CELLSIZE), 1)
 
     #vertical lines
     for i in range(CELLHEIGHT):
-        pygame.draw.line(screen, twhcolors.BLACK, (i*CELLSIZE, 0), (i*CELLSIZE, HEIGHT), 1)
+        pygame.draw.line(screen, twhcolors.GRAY, (i*CELLSIZE, 0), (i*CELLSIZE, HEIGHT), 1)
 
 def newgeneration():
     for x in range(1, CELLWIDTH-1):
@@ -113,7 +113,7 @@ while True:
             sys.exit()
 
     #draw background color to blank the screen
-    screen.fill(twhcolors.SILVER)
+    screen.fill(twhcolors.WHITE)
 
     drawgrid()
     newgeneration()
