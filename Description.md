@@ -23,7 +23,14 @@
 * [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius
 * [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral
 * [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock
+
+## Circular motion with gravity
 * [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum
+
+## Miscellaneous - games and such
+* [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life
+* [crane.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/crane.py "crane.py") - Crane
+* [pusher.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pusher.py "pusher.py") - Pushing a ball
 
 ## Auxiliary files
 * [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values
