@@ -40,21 +40,26 @@ stars=[]
 ##############################################################################
 #functions
 ##############################################################################
+#generate our first collection of stars
 def generatestars0():
-    N=STARS0
-    for i in range(N):
-        r=random.randint(0, 800)
+    for i in range(STARS0):
+        r=random.randint(0, 500)
         theta=random.randint(0, 359)
         star=[r, theta]
         stars.append(star)
 
+#draw the Stars
 def drawstars():
     for index, element in enumerate(stars):
+        #calculate x,y from r,theta using polar->certasian conversion
         x=CENTERX+int(element[0]*cos(element[1]))
         y=CENTERY+int(element[0]*sin(element[1]))
+
         if x<0 or x>WIDTH or y<0 or y>HEIGHT:
+            #if a star is out-of-bounds then remove it from the list
             stars.pop(index)
         else:
+            #draw the star
             pygame.draw.circle(screen, twhcolors.WHITE, (x, y), 3, FILLSTYLE)
 
 def drawinfo():
@@ -69,7 +74,7 @@ def drawinfo():
 
 def fly():
     #increase r for each star by STARDELTA
-    #move outward
+    #i.e. move outward
     for i in stars:
         i[0]+=STARDELTA
 
@@ -113,7 +118,7 @@ while True:
             sys.exit()
 
     #draw background color to blank the screen
-    screen.fill(twhcolors.BLACK)
+    screen.fill(twhcolors.MAROON)
 
     drawstars()
     drawinfo()
