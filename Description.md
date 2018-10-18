@@ -8,7 +8,7 @@
 * [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects (status: finished)
 
 ## Linear motion
-* [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py
+* [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py (status: finished)
 * [horizontal.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/horizontal.py "horizontal.py") - horizontal.py
 * [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - vertical.py
 * [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - angle.py
