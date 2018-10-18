@@ -1,11 +1,11 @@
 # Description of each python file
 
 ## Initial
-* [convention.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/convention.py "convention.py") - Outline of the source files (<span style="color: green">status: finished</span>)
-* [frame.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/frame.py "frame.py") - Displaying your first pygame window
-* [myname.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/myname.py "myname.py") - Displaying your name at center
-* [mynameblink.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mynameblink.py "mynameblink.py") - Make your name blink
-* [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects
+* [convention.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/convention.py "convention.py") - Outline of the source files (status: finished)
+* [frame.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/frame.py "frame.py") - Displaying your first pygame window (status: finished)
+* [myname.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/myname.py "myname.py") - Displaying your name at center (status: finished)
+* [mynameblink.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mynameblink.py "mynameblink.py") - Make your name blink (status: finished)
+* [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects (status: finished)
 
 ## Linear motion
 * [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py

@@ -14,7 +14,8 @@ import twhcolors
 #constants
 ##############################################################################
 #style=0 => filled, style=1 => thin line, style=4 => thick line
-FILLSTYLE=0
+FILLED=0
+FRAMED=1
 LINESTYLE=4
 
 FPS=40 #Frames pr second
@@ -60,17 +61,17 @@ while True:
             sys.exit()
 
     #circle(screen, color, coords(x, y), radius, fillstyle
-    pygame.draw.circle(screen, twhcolors.RED, (405, 405), 40, FILLSTYLE)
+    pygame.draw.circle(screen, twhcolors.RED, (405, 405), 40, FILLED)
 
     #rect(screen, color, coords(top, left, width, height), fillstyle
-    pygame.draw.rect(screen, twhcolors.YELLOW, (125, 225, 100, 100), FILLSTYLE)
+    pygame.draw.rect(screen, twhcolors.YELLOW, (125, 225, 100, 100), FILLED)
 
     #ellipse(screen, color, coords(top, left, bottom, right), fillstyle
-    pygame.draw.ellipse(screen, twhcolors.BLUE, (325, 25, 450, 100), 3)
+    pygame.draw.ellipse(screen, twhcolors.BLUE, (325, 25, 450, 100), FRAMED)
 
     #polygon(screen, color, pointlist((x, y)...), fillstyle
     pointlist_1 = [(25, 25), (105, 185), (185, 25)]
-    pygame.draw.polygon(screen, twhcolors.GREEN, pointlist_1, FILLSTYLE)
+    pygame.draw.polygon(screen, twhcolors.GREEN, pointlist_1, FRAMED)
 
     #line(screen, color, coords1(x, y), coords2(x, y), fillstyle
     pygame.draw.line(screen, twhcolors.MAGENTA, (25, 200), (375, 200), LINESTYLE)
