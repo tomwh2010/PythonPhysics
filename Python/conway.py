@@ -18,7 +18,7 @@ import random
 FILLSTYLE=0
 LINESTYLE=4
 
-FPS=1 #Frames pr second
+FPS=2 #Frames pr second
 
 #window size
 WIDTH=600
@@ -42,8 +42,13 @@ gen=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
 #functions
 ##############################################################################
 def createlife():
-    for x in range(1, CELLWIDTH-1):
-        for y in range(1, CELLHEIGHT-1):
+    x0=CELLWIDTH//2-5
+    x1=CELLWIDTH//2+5
+    y0=CELLHEIGHT//2-5
+    y1=CELLHEIGHT//2+5
+
+    for x in range(x0, x1):
+        for y in range(y0, y1):
             life[x][y]=random.randint(0, 1)
 
 def drawgrid():
@@ -74,10 +79,8 @@ def newgeneration():
                     else:
                         neighbors+=life[x+x1][y+y1]
             if (neighbors==2 or neighbors==3) and center==1:
-                #print(x,y,center,neighbors)
                 gen[x][y]=1
             if neighbors==3 and center==0:
-                #print(x,y,center,neighbors)
                 gen[x][y]=1
     for x in range(1, CELLWIDTH-1):
         for y in range(1, CELLHEIGHT-1):
