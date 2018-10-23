@@ -18,7 +18,7 @@ import random
 FILLSTYLE=0
 LINESTYLE=4
 
-FPS=2 #Frames pr second
+FPS=4 #Frames pr second
 
 #window size
 WIDTH=600
@@ -42,10 +42,10 @@ gen=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
 #functions
 ##############################################################################
 def createlife():
-    x0=CELLWIDTH//2-5
-    x1=CELLWIDTH//2+5
-    y0=CELLHEIGHT//2-5
-    y1=CELLHEIGHT//2+5
+    x0=1
+    x1=CELLWIDTH-1
+    y0=1
+    y1=CELLHEIGHT-1
 
     for x in range(x0, x1):
         for y in range(y0, y1):
