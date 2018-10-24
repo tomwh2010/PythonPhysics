@@ -1,6 +1,8 @@
 ##############################################################################
 #Description
 #Conway's Game Of Life
+#TODO create a library with drawinfobox
+#TODO make it generic with placement: top bottom, left center right
 ##############################################################################
 
 ##############################################################################
@@ -37,7 +39,7 @@ CELLHEIGHT=HEIGHT//CELLSIZE
 #initialize lists
 life=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
 gen=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
-
+generation=0
 ##############################################################################
 #functions
 ##############################################################################
@@ -51,7 +53,7 @@ def createlife():
         for y in range(y0, y1):
             life[x][y]=random.randint(0, 1)
 
-def drawgrid():
+def drawgrid():#screen, width, height):
     #draw cells
     for x in range(CELLWIDTH):
         for y in range(CELLHEIGHT):
@@ -67,6 +69,8 @@ def drawgrid():
         pygame.draw.line(screen, twhcolors.GRAY, (i*CELLSIZE, 0), (i*CELLSIZE, HEIGHT), 1)
 
 def newgeneration():
+    global generation
+    generation+=1
     for x in range(1, CELLWIDTH-1):
         for y in range(1, CELLHEIGHT-1):
             gen[x][y]=0
@@ -89,10 +93,23 @@ def newgeneration():
     #Any live cell with two or three live neighbors lives on to the next generation.
     #Any live cell with more than three live neighbors dies, as if by overpopulation.
     #Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+def drawinfobox(boxwidth, boxheight, textoffsetx, textoffsety, string, foregroundcolor, backgroundcolor, fillstyle):
+    #draw background
+    pygame.draw.rect(screen, backgroundcolor, (WIDTH-boxwidth, HEIGHT-boxheight, boxwidth, boxheight), fillstyle)
+    #render buffer as picture
+    textsurface=myfont.render(string, 1, foregroundcolor)
+    #paint picture to screen
+    screen.blit(textsurface, (WIDTH-boxwidth+textoffsetx, HEIGHT-boxheight+textoffsety))
+
 ##############################################################################
 #initial code
 ##############################################################################
 pygame.init() #initialize the pygame environment
+pygame.font.init() # you have to call this at the start if you want to use this module.
+
+#choose font for later use
+myfont = pygame.font.SysFont('Courier', 12)
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -120,6 +137,7 @@ while True:
 
     drawgrid()
     newgeneration()
+    drawinfobox(220, 20, 5, 5, "Generation #"+str(generation), twhcolors.BLACK, twhcolors.WHITE, FILLSTYLE)
 
     #update display
     pygame.display.flip()
