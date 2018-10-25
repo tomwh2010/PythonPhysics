@@ -10,40 +10,29 @@ import pygame
 ##############################################################################
 #constants
 ##############################################################################
-#WIDTH=600
-#HEIGHT=600
-#CELLSIZE=10
-
-#assert WIDTH%CELLSIZE==0, "Wrong width, cellsize"
-#assert HEIGHT%CELLSIZE==0, "Wrong height, cellsize"
-
-#CELLWIDTH=WIDTH//CELLSIZE
-#CELLHEIGHT=HEIGHT//CELLSIZE
 
 ##############################################################################
 #variables
 ##############################################################################
-#windowwidth=600
-#windowheight=600
-#cellsize=10
 
 ##############################################################################
 #functions
 ##############################################################################
-def drawgrid2(screen):
+def drawgrid(screen, width, height, columns, rows, size, gridcolor):
     #horizontal lines
-    for i in range(CELLWIDTH):
-        pygame.draw.line(screen, twhcolors.GRAY, (0, i*CELLSIZE), (WIDTH, i*CELLSIZE), 1)
+    for i in range(columns):
+        pygame.draw.line(screen, gridcolor, (0, i*size), (width, i*size), 1)
 
     #vertical lines
-    for i in range(CELLHEIGHT):
-        pygame.draw.line(screen, twhcolors.GRAY, (i*CELLSIZE, 0), (i*CELLSIZE, HEIGHT), 1)
+    for i in range(rows):
+        pygame.draw.line(screen, gridcolor, (i*size, 0), (i*size, height), 1)
 
-def drawinfobox(screen, windowwidth, windowheight, boxwidth, boxheight, textoffsetx, textoffsety, string, foregroundcolor, backgroundcolor, fillstyle):
+#TODO make it generic with placement: top bottom, left center right
+def drawinfobox(screen, font, windowwidth, windowheight, boxwidth, boxheight, textoffsetx, textoffsety, string, foregroundcolor, backgroundcolor, fillstyle):
     #draw background
     pygame.draw.rect(screen, backgroundcolor, (windowwidth-boxwidth, windowheight-boxheight, boxwidth, boxheight), fillstyle)
     #render buffer as picture
-    textsurface=myfont.render(string, 1, foregroundcolor)
+    textsurface=font.render(string, 1, foregroundcolor)
     #paint picture to screen
     screen.blit(textsurface, (windowwidth-boxwidth+textoffsetx, windowheight-boxheight+textoffsety))
 
