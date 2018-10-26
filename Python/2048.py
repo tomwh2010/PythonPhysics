@@ -1,6 +1,6 @@
 ##############################################################################
 #Description
-#Conway's Game Of Life
+#2048 game
 ##############################################################################
 
 ##############################################################################
@@ -22,9 +22,9 @@ LINESTYLE=4
 FPS=4 #Frames pr second
 
 #window size
-WIDTH=600
-HEIGHT=600
-CELLSIZE=10
+WIDTH=400
+HEIGHT=400
+CELLSIZE=100
 
 assert WIDTH%CELLSIZE==0, "Wrong width, cellsize"
 assert HEIGHT%CELLSIZE==0, "Wrong height, cellsize"
@@ -35,55 +35,48 @@ CELLHEIGHT=HEIGHT//CELLSIZE
 ##############################################################################
 #variables
 ##############################################################################
-#initialize lists
-life=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
-gen=[[0 for i in range(CELLWIDTH)] for j in range(CELLHEIGHT)]
-generation=0
+#create 4x4 list
+gamenum=[[0 for x in range(4)] for y in range(4)]
+print(gamenum)
 ##############################################################################
 #functions
 ##############################################################################
-def createlife():
-    x0=1
-    x1=CELLWIDTH-1
-    y0=1
-    y1=CELLHEIGHT-1
+def addnumber(n):
+    iteration=0
+    tries=0
+    while tries<32:
+        tries+=1
+        row=random.randint(0, 3)
+        column=random.randint(0, 3)
+        if gamenum[row][column]==0:
+            gamenum[row][column]=2
+            iteration+=1
+        if iteration==n:
+            print("Done adding number")
+            break
+    else:
+        print("No more empty cells")
 
-    for x in range(x0, x1):
-        for y in range(y0, y1):
-            life[x][y]=random.randint(0, 1)
+def move(deltarow, deltacol):
+    x=1
 
-def drawcells():
-    #draw cells
-    for x in range(CELLWIDTH):
-        for y in range(CELLHEIGHT):
-            if life[x][y]==1:
-                pygame.draw.rect(screen, twhcolors.BLACK, (x*CELLSIZE, y*CELLSIZE, CELLSIZE, CELLSIZE), 0)
+#    if event.key==pygame.K_UP:
+#        direction=0
+#    elif event.key==pygame.K_RIGHT:
+#        direction=1
+#    elif event.key==pygame.K_DOWN:
+#        direction=2
+    #elif event.key==pygame.K_LEFT:
+    #    direction=3
 
-def newgeneration():
-    global generation
-    generation+=1
-    for x in range(1, CELLWIDTH-1):
-        for y in range(1, CELLHEIGHT-1):
-            gen[x][y]=0
-            neighbors=0
-            center=0
-            for x1 in range(-1, 2):
-                for y1 in range(-1, 2):
-                    if x1==0 and y1==0:
-                        center=life[x][y]
-                    else:
-                        neighbors+=life[x+x1][y+y1]
-            if (neighbors==2 or neighbors==3) and center==1:
-                gen[x][y]=1
-            if neighbors==3 and center==0:
-                gen[x][y]=1
-    for x in range(1, CELLWIDTH-1):
-        for y in range(1, CELLHEIGHT-1):
-            life[x][y]=gen[x][y]
-    #Any live cell with fewer than two live neighbors dies, as if by underpopulation.
-    #Any live cell with two or three live neighbors lives on to the next generation.
-    #Any live cell with more than three live neighbors dies, as if by overpopulation.
-    #Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+def drawnums():
+    for row in range(4):
+        for column in range(4):
+            if gamenum[row][column]>0:
+                buffer=str(gamenum[row][column])
+                textsurface=myfont.render(buffer, 1, twhcolors.BLACK)
+                #paint picture to screen
+                screen.blit(textsurface, (column*CELLSIZE+2, row*CELLSIZE+2))
 
 ##############################################################################
 #initial code
@@ -92,16 +85,17 @@ pygame.init() #initialize the pygame environment
 pygame.font.init() # you have to call this at the start if you want to use this module.
 
 #choose font for later use
-myfont = pygame.font.SysFont('Courier', 12)
+myfont = pygame.font.SysFont('Courier', 48)
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Conway Game Of Life')
+pygame.display.set_caption('2048')
 
 # creates a clock
 clock=pygame.time.Clock()
 
-createlife()
+addnumber(2)
+print(gamenum)
 ##############################################################################
 #main loop
 ##############################################################################
@@ -114,14 +108,27 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        elif event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_UP:
+                move(-1, 0)
+                addnumber(1)
+                print("K_UP")
+            elif event.key==pygame.K_RIGHT:
+                move(0, 1)
+                addnumber(1)
+                print("K_RIGHT")
+            elif event.key==pygame.K_DOWN:
+                move(1, 0)
+                addnumber(1)
+                print("K_DOWN")
+            elif event.key==pygame.K_LEFT:
+                move(0, -1)
+                addnumber(1)
+                print("K_LEFT")
 
     #draw background color to blank the screen
     screen.fill(twhcolors.WHITE)
-
     twhwindow.drawgrid(screen, WIDTH, HEIGHT, CELLWIDTH, CELLHEIGHT, CELLSIZE, twhcolors.GRAY, 1)
-    drawcells()
-    newgeneration()
-    twhwindow.drawinfobox(screen, myfont, WIDTH, HEIGHT, 220, 20, 5, 5, "Generation #"+str(generation), twhcolors.BLACK, twhcolors.WHITE, FILLSTYLE)
-
+    drawnums()
     #update display
     pygame.display.flip()

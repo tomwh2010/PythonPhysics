@@ -18,14 +18,14 @@ import pygame
 ##############################################################################
 #functions
 ##############################################################################
-def drawgrid(screen, width, height, columns, rows, size, gridcolor):
+def drawgrid(screen, width, height, columns, rows, size, gridcolor, linewidth):
     #horizontal lines
     for i in range(columns):
-        pygame.draw.line(screen, gridcolor, (0, i*size), (width, i*size), 1)
+        pygame.draw.line(screen, gridcolor, (0, i*size), (width, i*size), linewidth)
 
     #vertical lines
     for i in range(rows):
-        pygame.draw.line(screen, gridcolor, (i*size, 0), (i*size, height), 1)
+        pygame.draw.line(screen, gridcolor, (i*size, 0), (i*size, height), linewidth)
 
 #TODO make it generic with placement: top bottom, left center right
 def drawinfobox(screen, font, windowwidth, windowheight, boxwidth, boxheight, textoffsetx, textoffsety, string, foregroundcolor, backgroundcolor, fillstyle):
