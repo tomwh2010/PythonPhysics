@@ -57,17 +57,59 @@ def addnumber(n):
     else:
         print("No more empty cells")
 
-def move(deltarow, deltacol):
-    x=1
+def printasciigame():
+    print()
+    for row in range(4):
+        print(gamenum[row])
 
-#    if event.key==pygame.K_UP:
-#        direction=0
-#    elif event.key==pygame.K_RIGHT:
-#        direction=1
-#    elif event.key==pygame.K_DOWN:
-#        direction=2
-    #elif event.key==pygame.K_LEFT:
-    #    direction=3
+
+#0=>right
+#1=>down
+#2=>left
+#3=>up
+
+def move(direction):
+    direction=3
+
+    #up/left
+    start_i=0
+    stop_i=3
+    step_i=1
+    start_j=1
+    stop_j=4
+    step_j=1
+
+    if direction<2:
+        #down/right
+        start_i=3
+        stop_i=0
+        step_i=-1
+        start_j=-1
+        stop_j=-1
+        step_j=-1
+
+    #scroll thru the cells right
+    for h in range(4):
+        for i in range(start_i, stop_i, step_i):
+            for j in range(i+start_j, stop_j, step_j):
+                if direction%2==0:
+                    #convert from 2->4 etc
+                    if gamenum[h][i]>0 and gamenum[h][i]==gamenum[h][j]:
+                        gamenum[h][i]+=gamenum[h][j]
+                        gamenum[h][j]=0
+                    #trickle right/down
+                    if gamenum[h][i]==0 and gamenum[h][j]>0:
+                        gamenum[h][i]=gamenum[h][j]
+                        gamenum[h][j]=0
+                else:
+                    #convert from 2->4 etc
+                    if gamenum[i][h]>0 and gamenum[i][h]==gamenum[j][h]:
+                        gamenum[i][h]+=gamenum[j][h]
+                        gamenum[j][h]=0
+                    #trickle up/left
+                    if gamenum[i][h]==0 and gamenum[j][h]>0:
+                        gamenum[i][h]=gamenum[j][h]
+                        gamenum[j][h]=0
 
 def drawnums():
     for row in range(4):
@@ -110,22 +152,23 @@ while True:
             sys.exit()
         elif event.type==pygame.KEYDOWN:
             if event.key==pygame.K_UP:
-                move(-1, 0)
+                move(3)
                 addnumber(1)
                 print("K_UP")
             elif event.key==pygame.K_RIGHT:
-                move(0, 1)
+                move(0)
                 addnumber(1)
                 print("K_RIGHT")
             elif event.key==pygame.K_DOWN:
-                move(1, 0)
+                move(1)
                 addnumber(1)
                 print("K_DOWN")
             elif event.key==pygame.K_LEFT:
-                move(0, -1)
+                move(2)
                 addnumber(1)
                 print("K_LEFT")
 
+            printasciigame()
     #draw background color to blank the screen
     screen.fill(twhcolors.WHITE)
     twhwindow.drawgrid(screen, WIDTH, HEIGHT, CELLWIDTH, CELLHEIGHT, CELLSIZE, twhcolors.GRAY, 1)
