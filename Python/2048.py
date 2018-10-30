@@ -12,6 +12,8 @@ import twhcolors
 import twhwindow
 import random
 
+random.seed(0)
+
 ##############################################################################
 #constants
 ##############################################################################
@@ -37,7 +39,6 @@ CELLHEIGHT=HEIGHT//CELLSIZE
 ##############################################################################
 #create 4x4 list
 gamenum=[[0 for x in range(4)] for y in range(4)]
-print(gamenum)
 ##############################################################################
 #functions
 ##############################################################################
@@ -50,6 +51,7 @@ def addnumber(n):
         column=random.randint(0, 3)
         if gamenum[row][column]==0:
             gamenum[row][column]=2
+            print("Added number at(",row,",",column,")")
             iteration+=1
         if iteration==n:
             print("Done adding number")
@@ -67,10 +69,7 @@ def printasciigame():
 #1=>down
 #2=>left
 #3=>up
-
 def move(direction):
-    direction=3
-
     #up/left
     start_i=0
     stop_i=3
@@ -135,9 +134,12 @@ pygame.display.set_caption('2048')
 
 # creates a clock
 clock=pygame.time.Clock()
-
+#print initial matrix
+printasciigame()
+#add 2 numbers to start with
 addnumber(2)
-print(gamenum)
+#print matrix
+printasciigame()
 ##############################################################################
 #main loop
 ##############################################################################
