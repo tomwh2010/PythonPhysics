@@ -54,15 +54,15 @@ pygame.display.set_caption('Framework')
 # creates a clock
 clock=pygame.time.Clock()
 
-#draw background color to blank the screen
-screen.fill(twhcolors.SILVER)
-
 ##############################################################################
 #main loop
 ##############################################################################
 while True:
     #limit updates to FPS
     clock.tick(FPS)
+
+    #draw background color to blank the screen
+    screen.fill(twhcolors.SILVER)
 
     #get events from the event queue
     for event in pygame.event.get():

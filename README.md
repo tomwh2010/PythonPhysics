@@ -15,10 +15,10 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 
 ## Linear motion
 * [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py (status: finished)
-* [horizontal.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/horizontal.py "horizontal.py") - horizontal.py
-* [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - vertical.py
-* [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - angle.py
-* [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - lines.py
+* [horizontal.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/horizontal.py "horizontal.py") - horizontal.py (status: finished)
+* [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - vertical.py (status: finished)
+* [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - angle.py (status: finished)
+* [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - lines.py (status: finished)
 
 ## Linear motion with gravity
 * [fallingball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingball.py "fallingball.py") - fallingball.py
