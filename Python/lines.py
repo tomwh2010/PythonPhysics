@@ -78,13 +78,13 @@ while True:
         dx2=0
         dy2=STEP
 
-    if x1==HEIGHT and y1==0:
+    if x1==WIDTH and y1==0:
         dx1=0
         dy1=STEP
         dx2=-STEP
         dy2=0
 
-    if x1==HEIGHT and y1==HEIGHT:
+    if x1==WIDTH and y1==HEIGHT:
         dx1=-STEP
         dy1=0
         dx2=0
