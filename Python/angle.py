@@ -86,7 +86,7 @@ while True:
     myball[0]+=delta_x
     myball[1]+=delta_y
 
-    #calcualte new delta if bouncing
+    #calculate new delta if bouncing
     if myball[1]>=(HEIGHT-BOUNCEDISTANCE):
         delta_y=-DELTA_Y
     if myball[1]<=BOUNCEDISTANCE:
