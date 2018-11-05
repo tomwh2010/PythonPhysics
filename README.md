@@ -28,7 +28,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
 * [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: release)
 * [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: beta)
-* [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: beta)
+* [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: release)
 
 ## Circular motion with gravity
 * [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum (status: beta)
@@ -38,7 +38,8 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: beta)
 * [crane.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/crane.py "crane.py") - Crane (status: alpha)
 * [pusher.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pusher.py "pusher.py") - Pushing a ball (status: alpha)
+* [stars.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/stars.py "stars.py") - Fly thru space (status: release)
 
 ## Auxiliary files
-* [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values (status: beta)
+* [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values (status: release)
 * [twhwindow.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhwindow.py "twhwindow.py") - Misc elements; infobox etc (status: alpha)

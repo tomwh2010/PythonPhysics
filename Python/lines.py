@@ -79,7 +79,6 @@ while True:
     #update color
     twhcolors.cyclecolor()
 
-<<<<<<< HEAD
     #change deltas if hitting one of the four corners
     if x_start==0 and y_start==0:
         dx_start=DELTA
@@ -105,41 +104,11 @@ while True:
         dx_stop=DELTA
         dy_stop=0
 
-    #update ned start, end points
+    #update start, end points
     x_start+=dx_start
     y_start+=dy_start
     x_stop+=dx_stop
     y_stop+=dy_stop
-=======
-    if x1==0 and y1==0:
-        dx1=STEP
-        dy1=0
-        dx2=0
-        dy2=STEP
-
-    if x1==WIDTH and y1==0:
-        dx1=0
-        dy1=STEP
-        dx2=-STEP
-        dy2=0
-
-    if x1==WIDTH and y1==HEIGHT:
-        dx1=-STEP
-        dy1=0
-        dx2=0
-        dy2=-STEP
-
-    if x1==0 and y1==HEIGHT:
-        dx1=0
-        dy1=-STEP
-        dx2=STEP
-        dy2=0
-
-    x1+=dx1
-    y1+=dy1
-    x2+=dx2
-    y2+=dy2
->>>>>>> 747cc5c2f7bf76c8c5c35187cad8e3e9d954a34b
 
     #update display
     pygame.display.flip()

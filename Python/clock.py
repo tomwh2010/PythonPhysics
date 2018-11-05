@@ -16,7 +16,8 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
-FPS=4 #Frames pr second
+#Frames pr second
+FPS=4
 
 #window size
 WIDTH=400
@@ -26,10 +27,12 @@ HEIGHT=420
 STARTX=200
 STARTY=200
 
+#hand radius
 RADIUS_HOUR=150
 RADIUS_MINUTE=190
 RADIUS_SECOND=190
 
+#hand color
 COLOR_HOUR=twhcolors.BLACK
 COLOR_MINUTE=twhcolors.BLACK
 COLOR_SECOND=twhcolors.BLUE
@@ -45,8 +48,11 @@ COLOR_SECOND=twhcolors.BLUE
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
-pygame.font.init() # you have to call this at the start if you want to use this module.
+#initialize the pygame environment
+pygame.init()
+
+# you have to call this at the start if you want to use this module.
+pygame.font.init()
 
 #choose font for later use
 myfont = pygame.font.SysFont('Courier', 12)
@@ -69,12 +75,13 @@ while True:
     #draw background color to blank the screen
     screen.fill(twhcolors.SILVER)
 
+    #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
 
-    #fetch  clock
+    #fetch clock
     theclock=localtime()
 
     #calculate theta
