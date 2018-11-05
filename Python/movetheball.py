@@ -12,12 +12,14 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
+#color of the ball
 SHAPE_COLOR=twhcolors.RED
 
 #style=0 => filled, style=1 => thin line, style=4 => thick line
 FILLSTYLE=0
 
-FPS=40 #Frames pr second
+#Frames pr second
+FPS=40
 
 #window size
 WIDTH=800
@@ -34,7 +36,8 @@ HEIGHT=500
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -43,7 +46,8 @@ pygame.display.set_caption('Framework')
 # creates a clock
 clock=pygame.time.Clock()
 
-myball=[300, 300]
+#initial location of the ball; center
+myball=[WIDTH//2, HEIGHT//2]
 
 ##############################################################################
 #main loop

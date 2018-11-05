@@ -25,10 +25,10 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [fallingballwithbounce.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingballwithbounce.py "fallingballwithbounce.py") - fallingballwithbounce.py (status: alpha)
 
 ## Circular motion
-* [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: beta)
-* [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: alpha)
-* [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: alpha)
-* [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: alpha)
+* [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
+* [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: release)
+* [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: beta)
+* [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: beta)
 
 ## Circular motion with gravity
 * [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum (status: beta)

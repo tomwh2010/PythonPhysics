@@ -13,18 +13,20 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
-FPS=4 #Frames pr second
+#Frames pr second
+FPS=1
 
 #window size
 WIDTH=400
 HEIGHT=400
 
-TEXTON=FPS
-TEXTOFF=FPS*2
-
 ##############################################################################
 #variables
 ##############################################################################
+#status flag to show text or not
+blinkit=False
+#create text buffer
+strBuffer="My name is Tom"
 
 ##############################################################################
 #functions
@@ -33,7 +35,8 @@ TEXTOFF=FPS*2
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -48,11 +51,12 @@ pygame.font.init()
 #choose font for later use
 myfont=pygame.font.SysFont('Times New Roman', 24)
 
+#render buffer as picture
+textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
+
 ##############################################################################
 #main loop
 ##############################################################################
-i=0
-
 while True:
     #limit updates to FPS
     clock.tick(FPS)
@@ -67,18 +71,13 @@ while True:
             pygame.quit()
             sys.exit()
 
-    i+=1
-
-    if i<TEXTON:
-        #create text buffer
-        strBuffer="My name is Tom"
-        #render buffer as picture
-        textsurface=myfont.render(strBuffer, 1, twhcolors.BLACK)
+    #if blinkit is true then shwo name
+    if blinkit:
         #paint picture to screen at location 130,180
         screen.blit(textsurface,(130, 180))
-
-    if i==TEXTOFF:
-        i=0
+        blinkit=False
+    else:
+        blinkit=True
 
     #update display
     pygame.display.flip()

@@ -14,25 +14,35 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
+#color of the ball
 SHAPE_COLOR=twhcolors.RED
 
 #style=0 => filled, style=1 => thin line, style=4 => thick line
 FILLSTYLE=0
 
-FPS=40 #Frames pr second
+#Frames pr second
+FPS=40
 
 #window size
 WIDTH=600
 HEIGHT=600
 
+#size of the ball
 BALLSIZE=10
+
+#how close to edge before bouncing
 BOUNCEDISTANCE=8
+
+#delta for ball on each update
 DELTA=5
 
 ##############################################################################
 #variables
 ##############################################################################
+#current delta
 delta_x=DELTA
+
+#initial location of ball
 myball=[BOUNCEDISTANCE, HEIGHT//2]
 
 ##############################################################################
@@ -42,7 +52,8 @@ myball=[BOUNCEDISTANCE, HEIGHT//2]
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -72,8 +83,12 @@ while True:
 
     #update position
     myball[0]+=delta_x
+
+    #if ball hits right side; change delta
     if myball[0]>=(WIDTH-BOUNCEDISTANCE):
         delta_x=-DELTA
+
+    #if ball hits left side; change delta
     if myball[0]<=BOUNCEDISTANCE:
         delta_x=DELTA
 

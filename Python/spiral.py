@@ -15,11 +15,14 @@ import twhcolors
 ##############################################################################
 LINESTYLE=2
 
-FPS=50 #Frames pr second
+#Frames pr second
+FPS=50
 
 #window size
 WIDTH=600
 HEIGHT=600
+
+#center x,y
 CENTERX=WIDTH//2
 CENTERY=HEIGHT//2
 
@@ -30,12 +33,16 @@ DELTAANGLE=6.0
 ##############################################################################
 #variables
 ##############################################################################
-x1=0
-y1=0
-x2=0
-y2=0
-angle=0.0
-radius=0.1
+
+#start, end points for ball and line
+startx=0
+starty=0
+stopx=0
+stopy=0
+
+#angle and radius for ball
+angle=0
+radius=0
 
 ##############################################################################
 #functions
@@ -44,19 +51,21 @@ radius=0.1
 ##############################################################################
 #functions
 ##############################################################################
-def reset():
-    global x1, y1, x2, y2, angle, radius
-    x1=CENTERX
-    y1=CENTERY
-    x2=CENTERX
-    y2=CENTERY
+#reset if ball hits the edge
+def resetvars():
+    global startx, starty, stopx, stopy, angle, radius
+    startx=CENTERX
+    starty=CENTERY
+    stopx=CENTERX
+    stopy=CENTERY
     angle=0
     radius=1
 
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -69,7 +78,7 @@ screen.fill(twhcolors.SILVER)
 clock=pygame.time.Clock()
 
 #reset the variables
-reset()
+resetvars()
 
 ##############################################################################
 #main loop
@@ -84,24 +93,27 @@ while True:
             pygame.quit()
             sys.exit()
 
-    #update coords
+    #calculate angle and radius
     angle+=DELTAANGLE
     radius+=DELTARADIUS
     if angle==360:
         angle=0
     theta=radians(angle)
-    x1=x2
-    y1=y2
-    x2=x1+int(radius*sin(theta))
-    y2=y1-int(radius*cos(theta))
+
+    #calculate new start, end points
+    startx=stopx
+    starty=stopy
+    stopx=startx+int(radius*sin(theta))
+    stopy=starty-int(radius*cos(theta))
 
     #if reached the edge then reset coords and choose new color
-    if x1<0 or x1>WIDTH or x2<0 or x2>WIDTH or y1<0 or y1>HEIGHT or y2<0 or y2>HEIGHT:
+    if startx<0 or startx>WIDTH or stopx<0 or stopx>WIDTH or starty<0 or starty>HEIGHT or stopy<0 or stopy>HEIGHT:
         twhcolors.cyclecolor()
-        reset()
+        resetvars()
 
-    pygame.draw.line(screen, twhcolors.getColor(), (x1, y1), (x2, y2), LINESTYLE)
-    pygame.draw.circle(screen, twhcolors.getColor(), (x2, y2), 5, 0)
+    #draw line and ball
+    pygame.draw.line(screen, twhcolors.getColor(), (startx, starty), (stopx, stopy), LINESTYLE)
+    pygame.draw.circle(screen, twhcolors.getColor(), (stopx, stopy), 5, 0)
 
     #update display
     pygame.display.flip()

@@ -18,7 +18,8 @@ FILLED=0
 FRAMED=1
 LINESTYLE=4
 
-FPS=40 #Frames pr second
+#Frames pr second
+FPS=40
 
 #window size
 WIDTH=800
@@ -35,7 +36,8 @@ HEIGHT=500
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))

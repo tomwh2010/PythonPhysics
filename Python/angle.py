@@ -15,25 +15,33 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
+#ball color
 SHAPE_COLOR=twhcolors.RED
 
 #style=0 => filled, style=1 => thin line, style=4 => thick line
 FILLSTYLE=0
 
-FPS=40 #Frames pr second
+#Frames pr second
+FPS=40
 
 #window size
 WIDTH=600
 HEIGHT=600
 
+#ballsize
 BALLSIZE=10
+
+#how close to the edge before bouncing
 BOUNCEDISTANCE=8
+
+#delta x,y
 DELTA_X=6
 DELTA_Y=4
 
 ##############################################################################
 #variables
 ##############################################################################
+#initial delta and start
 delta_y=DELTA_Y
 delta_x=DELTA_X
 myball=[10, 100]
@@ -45,7 +53,8 @@ myball=[10, 100]
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -76,6 +85,8 @@ while True:
     #update position
     myball[0]+=delta_x
     myball[1]+=delta_y
+
+    #calcualte new delta if bouncing
     if myball[1]>=(HEIGHT-BOUNCEDISTANCE):
         delta_y=-DELTA_Y
     if myball[1]<=BOUNCEDISTANCE:

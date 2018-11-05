@@ -12,27 +12,33 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
+#line thickness
 LINESTYLE=2
 
-FPS=20 #Frames pr second
+#Frames pr second
+FPS=20
 
 #window size
 WIDTH=600
 HEIGHT=600
 
-STEP=10
+#delta x, y for each update
+DELTA=10
 
 ##############################################################################
 #variables
 ##############################################################################
-x1=0
-y1=300
-x2=300
-y2=0
-dx1=0
-dy1=-STEP
-dx2=STEP
-dy2=0
+#initial start, end point for line
+x_start=0
+y_start=300
+x_stop=300
+y_stop=0
+
+#initial delta for start, stop
+dx_start=0
+dy_start=-DELTA
+dx_stop=DELTA
+dy_stop=0
 
 ##############################################################################
 #functions
@@ -41,7 +47,8 @@ dy2=0
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
+#initialize the pygame environment
+pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
@@ -67,39 +74,41 @@ while True:
             sys.exit()
 
     #line(screen, color, coords1(x, y), coords2(x, y), fillstyle
-    pygame.draw.line(screen, twhcolors.getColor(), (x1, y1), (x2, y2), LINESTYLE)
+    pygame.draw.line(screen, twhcolors.getColor(), (x_start, y_start), (x_stop, y_stop), LINESTYLE)
 
-    #update steps
+    #update color
     twhcolors.cyclecolor()
 
-    if x1==0 and y1==0:
-        dx1=STEP
-        dy1=0
-        dx2=0
-        dy2=STEP
+    #change deltas if hitting one of the four corners
+    if x_start==0 and y_start==0:
+        dx_start=DELTA
+        dy_start=0
+        dx_stop=0
+        dy_stop=DELTA
 
-    if x1==HEIGHT and y1==0:
-        dx1=0
-        dy1=STEP
-        dx2=-STEP
-        dy2=0
+    if x_start==HEIGHT and y_start==0:
+        dx_start=0
+        dy_start=DELTA
+        dx_stop=-DELTA
+        dy_stop=0
 
-    if x1==HEIGHT and y1==HEIGHT:
-        dx1=-STEP
-        dy1=0
-        dx2=0
-        dy2=-STEP
+    if x_start==HEIGHT and y_start==HEIGHT:
+        dx_start=-DELTA
+        dy_start=0
+        dx_stop=0
+        dy_stop=-DELTA
 
-    if x1==0 and y1==HEIGHT:
-        dx1=0
-        dy1=-STEP
-        dx2=STEP
-        dy2=0
+    if x_start==0 and y_start==HEIGHT:
+        dx_start=0
+        dy_start=-DELTA
+        dx_stop=DELTA
+        dy_stop=0
 
-    x1+=dx1
-    y1+=dy1
-    x2+=dx2
-    y2+=dy2
+    #update ned start, end points
+    x_start+=dx_start
+    y_start+=dy_start
+    x_stop+=dx_stop
+    y_stop+=dy_stop
 
     #update display
     pygame.display.flip()
