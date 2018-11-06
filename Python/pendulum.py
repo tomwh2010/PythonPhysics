@@ -13,7 +13,8 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
-FPS=15 #Frames pr second
+#Frames pr second
+FPS=15
 
 #window size
 WIDTH=400
@@ -29,7 +30,8 @@ G=9.81
 
 #Start angle and velocity
 #0=up, 90=right, 180=down, 270=left
-STARTANGLE=5 #Try different angles to see what happens
+#Try different angles to see what happens
+STARTANGLE=5
 
 #>0 =>counter-clockwise
 #<0 =>clockwise
@@ -46,8 +48,11 @@ STARTVELOCITY=0
 #variables
 ##############################################################################
 # Physical properties and initial conditions for pendulum
-theta=radians(STARTANGLE) 		# initial upper angle (from vertical)
-velocity=STARTVELOCITY 			# start pendulum at start
+# initial upper angle (from vertical)
+theta=radians(STARTANGLE)
+
+# start pendulum at start
+velocity=STARTVELOCITY
 
 #delta time
 dt=0.1
@@ -59,8 +64,11 @@ dt=0.1
 ##############################################################################
 #initial code
 ##############################################################################
-pygame.init() #initialize the pygame environment
-pygame.font.init() # you have to call this at the start if you want to use this module.
+#initialize the pygame environment
+pygame.init()
+
+# you have to call this at the start if you want to use this module.
+pygame.font.init()
 
 # creates a clock
 clock=pygame.time.Clock()
@@ -94,6 +102,7 @@ while True:
     velocity+=accel*dt
     # Change angle according to (updated) velocity
     theta-=velocity
+    
     #calculate new position for the ball
     stopx=STARTX+int(RADIUS*sin(theta))
     stopy=STARTY-int(RADIUS*cos(theta))

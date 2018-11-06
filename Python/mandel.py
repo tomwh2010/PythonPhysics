@@ -1,5 +1,7 @@
 ##############################################################################
 #Description
+#Generating mandelbrot Fractal
+#Inspired by https://gist.github.com/rameshvarun/5694091
 ##############################################################################
 
 ##############################################################################
@@ -7,44 +9,46 @@
 ##############################################################################
 import pygame, sys
 from pygame.locals import *
-from math import *
 import twhcolors
 
 ##############################################################################
-#constants
+#constants (variable names written with upper case)
 ##############################################################################
 #Frames pr second
-FPS=25
+FPS=40
 
 #window size
 WIDTH=800
-HEIGHT=800
-
-#center x,y and radius
-CENTERX=400
-CENTERY=400
-
-#change these 4 constants to get som wierd patterns
-STARTVELOCITY=1
-STARTRADIUS=1
-DELTAVELOCITY=0.002
-DELTARADIUS=1.03
+HEIGHT=600
 
 ##############################################################################
 #variables
 ##############################################################################
-# Physical properties and initial conditions for pendulum
-# initial upper angle (from vertical)
-theta=radians(0)
-# start pendulum at rest
-velocity=STARTVELOCITY
-radius=STARTRADIUS
-startx=CENTERX
-starty=CENTERY
+max_iteration = 255
+buffer=[[0.0 for x in range(WIDTH+1)] for y in range(HEIGHT+1)]
 
 ##############################################################################
 #functions
 ##############################################################################
+def calculate():
+    global buffer, WIDTH, HEIGHT, max_iteration
+    for i in range(WIDTH):
+        if i%10==0:
+            print(i*100//WIDTH,"%")
+        for j in range(HEIGHT):
+            x0=(float(i)/WIDTH)*3.5-2.5
+            y0=(float(j)/HEIGHT)*2-1
+            x=0
+            y=0
+            iteration=0
+
+            while x*x+y*y<2*2 and iteration<max_iteration:
+                xtemp=x*x-y*y+x0
+                y=2*x*y+y0
+                x=xtemp
+                iteration=iteration+1
+
+            buffer[j][i]=iteration
 
 ##############################################################################
 #initial code
@@ -52,23 +56,17 @@ starty=CENTERY
 #initialize the pygame environment
 pygame.init()
 
-# you have to call this at the start if you want to use this module.
-pygame.font.init()
-
-# creates a clock
-clock=pygame.time.Clock()
-
-#choose font for later use
-myfont = pygame.font.SysFont('Courier', 12)
-
 # set up the window with size and caption
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Spiral')
-
+screen=pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('Mandelbrot Fractal')
 
 #draw background color to blank the screen
 screen.fill(twhcolors.SILVER)
 
+# creates a clock
+clock=pygame.time.Clock()
+
+calculate()
 ##############################################################################
 #main loop
 ##############################################################################
@@ -82,23 +80,10 @@ while True:
             pygame.quit()
             sys.exit()
 
-    # Calculate new radius
-    radius*=DELTARADIUS
-    # Change velocity
-    velocity+=DELTAVELOCITY
-    # Change angle according to (updated) velocity
-    theta-=velocity
-    #calculate new position for the ball
-    stopx=CENTERX+int(radius*sin(theta))
-    stopy=CENTERY-int(radius*cos(theta))
-
-    #draw new pendulum
-    pygame.draw.circle(screen, twhcolors.BLACK, (stopx, stopy), 2, 0)
-    pygame.draw.line(screen, twhcolors.BLACK, (startx, starty), (stopx, stopy), 2)
-
-    #flip start and stop
-    startx=stopx
-    starty=stopy
-
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            pygame.draw.rect(screen, (buffer[y][x],buffer[y][x],buffer[y][x]), (x, y, 1, 1), 0)
     #update display
     pygame.display.flip()
+
+print("done")

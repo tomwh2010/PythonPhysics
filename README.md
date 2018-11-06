@@ -27,16 +27,17 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 ## Circular motion
 * [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
 * [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: release)
-* [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: beta)
+* [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: release)
 * [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: release)
 
 ## Circular motion with gravity
-* [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum (status: beta)
+* [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum (status: release)
 
 ## Miscellaneous - games and such
 * [2048.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/2048.py "2048.py") - 2048 (status: alpha)
-* [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: beta)
+* [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
 * [crane.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/crane.py "crane.py") - Crane (status: alpha)
+* [mandel.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mandel.py "mandel.py") - Mandelbrot (status: alpha)
 * [pusher.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pusher.py "pusher.py") - Pushing a ball (status: alpha)
 * [stars.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/stars.py "stars.py") - Fly thru space (status: release)
 
