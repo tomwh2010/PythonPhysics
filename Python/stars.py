@@ -10,13 +10,12 @@ import pygame, sys
 from pygame.locals import *
 from math import *
 import twhcolors
+import twhwindow
 import random
 
 ##############################################################################
 #constants
 ##############################################################################
-SHAPE_COLOR=twhcolors.RED
-
 #style=0 => filled, style=1 => thin line, style=4 => thick line
 FILLSTYLE=0
 
@@ -70,16 +69,6 @@ def drawstars():
         else:
             #draw the star
             pygame.draw.circle(screen, twhcolors.WHITE, (x, y), 3, FILLSTYLE)
-
-#draw info box with num of stars
-def drawinfo():
-    pygame.draw.rect(screen, twhcolors.BLACK, (WIDTH-130, HEIGHT-40, 200, 100), FILLSTYLE)
-    #create text buffer
-    strBuffer="Stars #"+str(len(stars))
-    #render buffer as picture
-    textsurface=myfont.render(strBuffer, 1, twhcolors.WHITE)
-    #paint picture to screen at location 130,180
-    screen.blit(textsurface,(WIDTH-110, HEIGHT-30))
 
 #move stars outwards and add a new star
 def fly():
@@ -135,7 +124,9 @@ while True:
 
     #fly thru space!
     drawstars()
-    drawinfo()
+    #create text buffer
+    strBuffer="Stars #"+str(len(stars))
+    twhwindow.drawinfobox(screen, myfont, WIDTH, HEIGHT, 110, 20, -10, -10, strBuffer, twhcolors.WHITE, twhcolors.BLACK, FILLSTYLE)
     fly()
 
     #update display
