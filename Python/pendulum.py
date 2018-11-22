@@ -102,7 +102,7 @@ while True:
     velocity+=accel*dt
     # Change angle according to (updated) velocity
     theta-=velocity
-    
+
     #calculate new position for the ball
     stopx=STARTX+int(RADIUS*sin(theta))
     stopy=STARTY-int(RADIUS*cos(theta))
