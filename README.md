@@ -29,6 +29,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: release)
 * [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: release)
 * [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: release)
+* [clock2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock2.py "clock2.py") - Analog clock - smooth version (status: release)
 
 ## Circular motion with gravity
 * [pendulum.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pendulum.py "pendulum.py") - Pendulum (status: release)
