@@ -2,6 +2,7 @@
 #Description
 #Draw an analog clock
 #Demonstrates polar to cartesian conversion
+#alternative example without fps; resulting in smooth operation
 ##############################################################################
 
 ##############################################################################
@@ -56,10 +57,7 @@ myfont = pygame.font.SysFont('Courier', 12)
 
 # set up the window with size and caption
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Clock')
-
-# creates a clock
-clock=pygame.time.Clock()
+pygame.display.set_caption('Clock2')
 
 ##############################################################################
 #main loop
