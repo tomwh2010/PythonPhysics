@@ -139,3 +139,5 @@ while True:
 
     #update display
     pygame.display.flip()
+
+x=input("Done")
