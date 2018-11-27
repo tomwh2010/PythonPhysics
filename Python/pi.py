@@ -53,7 +53,7 @@ pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Mandelbrot Fractal')
+pygame.display.set_caption('PI calculation')
 
 # you have to call this at the start if you want to use this module.
 pygame.font.init()
