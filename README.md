@@ -21,8 +21,8 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - lines.py (status: release)
 
 ## Linear motion with gravity
-* [fallingball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingball.py "fallingball.py") - fallingball.py (status: alpha)
-* [fallingballwithbounce.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingballwithbounce.py "fallingballwithbounce.py") - fallingballwithbounce.py (status: alpha)
+* [fallingball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingball.py "fallingball.py") - fallingball.py (status: beta)
+* [fallingballwithbounce.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingballwithbounce.py "fallingballwithbounce.py") - fallingballwithbounce.py (status: beta)
 
 ## Circular motion
 * [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
@@ -38,9 +38,9 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [2048.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/2048.py "2048.py") - 2048 (status: alpha)
 * [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
 * [crane.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/crane.py "crane.py") - Crane (status: alpha)
-* [mandel.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mandel.py "mandel.py") - Mandelbrot (status: alpha) (status: alpha)
+* [mandel.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mandel.py "mandel.py") - Mandelbrot (status: beta)
 * [maze.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/maze.py "maze.py") - Maze (status: alpha)
-* [pi.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pi.py "pi.py") - Calculating pi (status: alpha)
+* [pi.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pi.py "pi.py") - Calculating pi (status: beta)
 * [pusher.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pusher.py "pusher.py") - Pushing a ball (status: alpha)
 * [stars.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/stars.py "stars.py") - Fly thru space (status: release)
 

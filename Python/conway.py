@@ -60,7 +60,6 @@ def createlife():
 
 #draw each cell
 def drawcells():
-    #draw cells
     for x in range(CELLWIDTH):
         for y in range(CELLHEIGHT):
             if life[x][y]==1:

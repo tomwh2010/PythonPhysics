@@ -30,7 +30,8 @@ buffer=[[0.0 for x in range(WIDTH+1)] for y in range(HEIGHT+1)]
 ##############################################################################
 #functions
 ##############################################################################
-def calculate():
+#See https://en.wikipedia.org/wiki/Mandelbrot_set for details about mandelbrot set
+def calculate_mandelbrot():
     global buffer, WIDTH, HEIGHT, max_iteration
     for i in range(WIDTH):
         if i%10==0:
@@ -66,7 +67,7 @@ screen.fill(twhcolors.SILVER)
 # creates a clock
 clock=pygame.time.Clock()
 
-calculate()
+calculate_mandelbrot()
 ##############################################################################
 #main loop
 ##############################################################################
@@ -80,6 +81,7 @@ while True:
             pygame.quit()
             sys.exit()
 
+    #paint each 1x1 cell
     for y in range(HEIGHT):
         for x in range(WIDTH):
             pygame.draw.rect(screen, (buffer[y][x],buffer[y][x],buffer[y][x]), (x, y, 1, 1), 0)

@@ -58,7 +58,7 @@ pygame.init()
 
 # set up the window with size and caption
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Framework')
+pygame.display.set_caption('Angle')
 
 # creates a clock
 clock=pygame.time.Clock()

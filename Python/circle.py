@@ -1,6 +1,7 @@
 ##############################################################################
 #Description
 #Ball moves in a circle
+#Polar to cartesian convversion
 ##############################################################################
 
 ##############################################################################
@@ -51,7 +52,7 @@ pygame.init()
 
 # set up the window with size and caption
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Clock')
+pygame.display.set_caption('Circle')
 
 # creates a clock
 clock=pygame.time.Clock()

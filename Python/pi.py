@@ -1,6 +1,7 @@
 ##############################################################################
 #Description
-#Animating pi
+#Animating pi by hitting a circle, inscribed in a square, with infinite number of darts
+#PI is therefore defined as 4*num_hit_target/num_tries
 ##############################################################################
 
 ##############################################################################
@@ -34,10 +35,10 @@ FRAMED=1
 ##############################################################################
 #variables
 ##############################################################################
-n=1
+num_tries=1
 errorstop=1E-10
-m=0
-animate=True
+num_hit_target=0
+animate=False
 error=0
 MyPI=0
 
@@ -86,14 +87,18 @@ while True:
             pygame.quit()
             sys.exit()
 
+        # if any key is pressed
+        elif event.type==pygame.KEYDOWN:
+            animate=True
+
     if animate:
-        n=n+1
+        num_tries=num_tries+1
         x=random.random()*2-1
         y=random.random()*2-1
         test=x**2+y**2
         if test<=1:
-            m+=1
-            MyPI=4*m/n
+            num_hit_target+=1
+            MyPI=4*num_hit_target/num_tries
             error=abs(MyPI-pi)
         if error<errorstop:
             animate=False
@@ -108,7 +113,7 @@ while True:
         twhwindow.drawinfobox(screen, myfont, WIDTH, HEIGHT, WIDTH, 20, 0, 0, strBuffer, twhcolors.BLACK, twhcolors.SILVER, FILLSTYLE)
         strBuffer="Error="+str(error)
         twhwindow.drawinfobox(screen, myfont, WIDTH, HEIGHT, WIDTH-150, 20, 0, 0, strBuffer, twhcolors.BLACK, twhcolors.SILVER, FILLSTYLE)
-        strBuffer="Tries="+str(n)
+        strBuffer="num_tries="+str(num_tries)
         twhwindow.drawinfobox(screen, myfont, WIDTH, HEIGHT, WIDTH-330, 20, 0, 0, strBuffer, twhcolors.BLACK, twhcolors.SILVER, FILLSTYLE)
 
     #update display
