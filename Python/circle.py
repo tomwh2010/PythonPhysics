@@ -23,8 +23,8 @@ WIDTH=400
 HEIGHT=400
 
 #center x,y and radius
-STARTX=WIDTH//2
-STARTY=HEIGHT//2
+CENTERX=WIDTH//2
+CENTERY=HEIGHT//2
 RADIUS=190
 
 #change to negative number for counterclockwise
@@ -37,8 +37,8 @@ DELTA=2
 angle=0
 
 #initial x, y for ball
-ballx=STARTY
-bally=STARTY-RADIUS
+ballx=CENTERX
+bally=CENTERY-RADIUS
 
 ##############################################################################
 #functions
@@ -82,8 +82,8 @@ while True:
     theta=radians(angle)
 
     #calculate x,y for ball
-    ballx=STARTX+int(RADIUS*sin(theta))
-    bally=STARTY-int(RADIUS*cos(theta))
+    ballx=CENTERX+int(RADIUS*sin(theta))
+    bally=CENTERY-int(RADIUS*cos(theta))
 
     #update display
     pygame.display.flip()

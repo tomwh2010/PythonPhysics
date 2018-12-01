@@ -17,6 +17,9 @@ import twhcolors
 ##############################################################################
 #constants
 ##############################################################################
+#Frames pr second
+FPS=20
+
 #window size
 WIDTH=400
 HEIGHT=420
@@ -59,11 +62,17 @@ myfont = pygame.font.SysFont('Courier', 12)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Clock2')
 
+# creates a clock
+clock=pygame.time.Clock()
+
 ##############################################################################
 #main loop
 ##############################################################################
 
 while True:
+    #limit updates to FPS
+    clock.tick(FPS)
+
     #draw background color to blank the screen
     screen.fill(twhcolors.SILVER)
 
