@@ -77,6 +77,7 @@ while True:
         color=twhcolors.BLUE
         if chosen:
             color=twhcolors.RED
+            
     #rect(screen, color, coords(top, left, width, height), fillstyle
     pygame.draw.rect(screen, color, (100, 100, 300, 300), FILLED)
 
