@@ -37,9 +37,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 
 ## Miscellaneous - games and such
 * [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
-* [crane.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/crane.py "crane.py") - Crane (status: beta)
 * [mandel.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mandel.py "mandel.py") - Mandelbrot (status: beta)
-* [pi.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/pi.py "pi.py") - Calculating pi (status: beta)
 * [stars.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/stars.py "stars.py") - Fly thru space (status: release)
 
 ## Auxiliary files
