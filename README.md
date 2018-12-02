@@ -12,7 +12,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [myname.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/myname.py "myname.py") - Displaying your name at center (status: release)
 * [mynameblink.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mynameblink.py "mynameblink.py") - Make your name blink (status: release)
 * [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects (status: release)
-* [mouse.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mouse.py "mouse.py") - Displaying different type of objects (status: release)
+* [mouse.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mouse.py "mouse.py") - Mouseclick on a square; change color according to state (status: release)
 
 ## Linear motion
 * [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py (status: release)
