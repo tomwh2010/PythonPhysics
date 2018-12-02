@@ -2,7 +2,7 @@
 #Description
 #Draw an analog clock
 #Demonstrates polar to cartesian conversion
-#alternative example without fps; resulting in smooth operation
+#Alternative version; smooth transitions
 ##############################################################################
 
 ##############################################################################
