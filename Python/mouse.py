@@ -1,6 +1,6 @@
 ##############################################################################
 #Description
-#Draw different objects
+#Draw a square; change color with mouse movement and click
 ##############################################################################
 
 ##############################################################################
@@ -15,20 +15,24 @@ import twhcolors
 ##############################################################################
 #style=0 => filled, style=1 => thin line, style=4 => thick line
 FILLED=0
-FRAMED=1
-LINESTYLE=4
 
 #Frames pr second
-FPS=40
+FPS=25
 
 #window size
 WIDTH=600
 HEIGHT=620
 
+YELLOW=(255,255,0)
+RED=(255,0,0)
+GREEN=(0,128,0)
+BLUE=(0,0,255)
+
 ##############################################################################
 #variables
 ##############################################################################
 chosen=False
+box=pygame.Rect(100, 100, 300, 300)
 
 ##############################################################################
 #functions
@@ -57,29 +61,33 @@ while True:
     #limit updates to FPS
     clock.tick(FPS)
 
+    x,y=pygame.mouse.get_pos()
+    collision=False
+    if box.collidepoint(x, y):
+        collision=True
+
     #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit
         #if user clicked on the square->change state
-        elif event.type == pygame.MOUSEBUTTONUP:
-            x,y = pygame.mouse.get_pos()
-            if x>=100 and x<=400 and y>=100 and y<=400:
+        elif event.type == MOUSEBUTTONUP:
+            if collision:
                 chosen=not chosen
 
-    #is the mouse within the boundaries of the square->set the appropriate color
-    x, y=pygame.mouse.get_pos()
-    color=twhcolors.YELLOW
     if chosen:
-        color=twhcolors.GREEN
-    if x>=100 and x<=400 and y>=100 and y<=400:
-        color=twhcolors.BLUE
-        if chosen:
-            color=twhcolors.RED
-            
-    #rect(screen, color, coords(top, left, width, height), fillstyle
-    pygame.draw.rect(screen, color, (100, 100, 300, 300), FILLED)
+        if collision:
+            color=YELLOW
+        else:
+            color=BLUE
+    else:
+        if collision:
+            color=RED
+        else:
+            color=GREEN
+
+    pygame.draw.rect(screen, color, box, FILLED)
 
     #update display
     pygame.display.flip()
