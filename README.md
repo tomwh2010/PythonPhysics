@@ -39,6 +39,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
 * [mandel.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mandel.py "mandel.py") - Mandelbrot (status: beta)
 * [stars.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/stars.py "stars.py") - Fly thru space (status: release)
+* [xmas.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/xmas.py "xmas.py") - Display xmas with fading (status: release)
 
 ## Auxiliary files
 * [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values (status: release)
