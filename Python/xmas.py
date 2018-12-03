@@ -16,7 +16,7 @@ import pygame.gfxdraw
 #constants
 ##############################################################################
 #Frames pr second
-FPS=10
+FPS=5
 
 WIDTH=600
 HEIGHT=600
@@ -80,7 +80,7 @@ while True:
     #draw the text
     screen.blit(textsurface,(x, y+150))
 
-    #calculate where to draw next
+    #draw the tree
     screen.blit(tree, (x,y))
 
     #update display
