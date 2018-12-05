@@ -61,8 +61,6 @@ while True:
     #limit updates to FPS
     clock.tick(FPS)
 
-    #
-
     #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
