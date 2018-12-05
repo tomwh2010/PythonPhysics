@@ -61,16 +61,18 @@ while True:
     #limit updates to FPS
     clock.tick(FPS)
 
-    x,y=pygame.mouse.get_pos()
-    collision=False
-    if box.collidepoint(x, y):
-        collision=True
+    #
 
     #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit
+        elif event.type == MOUSEMOTION:
+            collision=False
+            x,y=event.pos
+            if box.collidepoint(x, y):
+                collision=True
         #if user clicked on the square->change state
         elif event.type == MOUSEBUTTONUP:
             if collision:
