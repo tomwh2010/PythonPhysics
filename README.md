@@ -15,15 +15,16 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [mouse.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mouse.py "mouse.py") - Mouseclick on a square; change color according to state (status: release)
 
 ## Linear motion
-* [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - movetheball.py (status: release)
-* [horizontal.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/horizontal.py "horizontal.py") - horizontal.py (status: release)
-* [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - vertical.py (status: release)
-* [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - angle.py (status: release)
-* [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - lines.py (status: release)
+* [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - Move a ball around with UP/DOWN/LEFT/RIGHT (status: release)
+* [movetheball_continuous.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball_continuous.py "movetheball_continuous.py") - Move a ball around with UP/DOWN/LEFT/RIGHT continuously (status: release)
+* [horizontal.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/horizontal.py "horizontal.py") - Ball moves horizontal (status: release)
+* [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - Ball moves vertical (status: release)
+* [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - Ball moves at angle (status: release)
+* [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - Animation with lines (status: release)
 
 ## Linear motion with gravity
-* [fallingball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingball.py "fallingball.py") - fallingball.py (status: beta)
-* [fallingballwithbounce.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingballwithbounce.py "fallingballwithbounce.py") - fallingballwithbounce.py (status: beta)
+* [fallingball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingball.py "fallingball.py") - Ball falls faster and faster (status: beta)
+* [fallingballwithbounce.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fallingballwithbounce.py "fallingballwithbounce.py") - Ball falls faster and faster with bounce and forward motion (status: beta)
 
 ## Circular motion
 * [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
