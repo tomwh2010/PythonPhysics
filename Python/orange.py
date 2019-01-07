@@ -8,7 +8,7 @@ fps=1
 maxupdate=2000
 update=0
 
-file="fakenews1.mp3"
+file="fakenews1.wav"
 pygame.mixer.init()
 pygame.mixer.music.load(file)
 
