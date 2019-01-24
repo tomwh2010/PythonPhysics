@@ -11,7 +11,7 @@ from pygame.locals import *
 from math import *
 import twhcolors
 import pygame.gfxdraw
-import random
+from pendulum import RandomPendulum
 
 pygame.init()
 ##############################################################################
@@ -20,66 +20,38 @@ pygame.init()
 #Frames pr second
 FPS=15
 
+# gravity
+G=9.81
+
 #window size
 WIDTH, HEIGHT = pygame.display.Info().current_w, pygame.display.Info().current_h
 
 #center x,y and radius
 STARTX0=WIDTH//2
 STARTY0=HEIGHT//2
-RADIUS0=random.randint(STARTY0//8,STARTY0//4)
-RADIUS1=random.randint(STARTY0//8,STARTY0//4)
-RADIUS2=random.randint(STARTY0//8,STARTY0//4)
-RADIUS3=random.randint(STARTY0//8,STARTY0//4)
-print(RADIUS0, RADIUS1, RADIUS2, RADIUS3)
-
-# gravity
-G=9.81
-
-#Start angle and velocity
-#0=up, 90=right, 180=down, 270=left
-#Try different angles to see what happens
-STARTANGLE0=random.randint(0,359)
-STARTANGLE1=random.randint(0,359)
-STARTANGLE2=random.randint(0,359)
-STARTANGLE3=random.randint(0,359)
-print(STARTANGLE0, STARTANGLE1, STARTANGLE2, STARTANGLE3)
-
-#>0 =>counter-clockwise
-#<0 =>clockwise
-#otherwise side to side
-#higher initial velocity=>higher speed
-STARTVELOCITY0=random.uniform(-0.05, 0.05)
-STARTVELOCITY1=random.uniform(-0.05, 0.05)
-STARTVELOCITY2=random.uniform(-0.05, 0.05)
-STARTVELOCITY3=random.uniform(-0.05, 0.05)
-print(STARTVELOCITY0, STARTVELOCITY1, STARTVELOCITY2, STARTVELOCITY3)
-
-INFLUENCE0=0#random.uniform(0, 0.05)
-INFLUENCE1=0#random.uniform(0, 0.05)
-INFLUENCE2=0#random.uniform(0, 0.05)
-print(INFLUENCE0, INFLUENCE1, INFLUENCE2)
 
 #delta time
 DT=0.05
+
+pd=RandomPendulum()
 
 ##############################################################################
 #variables
 ##############################################################################
 # Physical properties and initial conditions for pendulum
 # initial upper angle (from vertical)
-theta0=radians(STARTANGLE0)
-theta1=radians(STARTANGLE1)
-theta2=radians(STARTANGLE2)
-theta3=radians(STARTANGLE3)
+theta0=radians(pd.startangle0)
+theta1=radians(pd.startangle1)
+theta2=radians(pd.startangle2)
+theta3=radians(pd.startangle3)
+theta4=radians(pd.startangle4)
 
 # start pendulum at start
-velocity0=STARTVELOCITY0
-velocity1=STARTVELOCITY1
-velocity2=STARTVELOCITY2
-velocity3=STARTVELOCITY3
-
-
-
+velocity0=pd.startvelocity0
+velocity1=pd.startvelocity1
+velocity2=pd.startvelocity2
+velocity3=pd.startvelocity3
+velocity4=pd.startvelocity4
 
 ##############################################################################
 #functions
@@ -101,7 +73,7 @@ clock=pygame.time.Clock()
 myfont = pygame.font.SysFont('Courier', 12)
 
 # set up the window with size and caption
-screen = pygame.display.set_mode((WIDTH, HEIGHT))#, pygame.FULLSCREEN)
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 ball = pygame.surface.Surface((WIDTH, HEIGHT))
 ball.fill(twhcolors.SILVER)
 pygame.display.set_caption('Pendelum')
@@ -131,49 +103,60 @@ while True:
         sys.exit()
 
     # Calculate accelleration due to gravity
-    accel0=-(G/RADIUS0)*sin(theta0)
+    accel0=-(G/pd.radius0)*sin(theta0)
+    accel1=-(G/pd.radius1)*sin(theta1)-accel0*pd.influence00
+    accel2=-(G/pd.radius2)*sin(theta2)-accel1*pd.influence01
+    accel3=-(G/pd.radius3)*sin(theta3)-accel2*pd.influence02
+    accel4=-(G/pd.radius3)*sin(theta4)-accel3*pd.influence03
+    accel3-=accel4*pd.influence14
+    accel2-=accel3*pd.influence13
+    accel1-=accel2*pd.influence12
+    accel0-=accel1*pd.influence11
+
     # Change velocity according to accelleration
     velocity0+=accel0*DT
     # Change angle according to (updated) velocity
     theta0-=velocity0
 
-    # Calculate accelleration due to gravity
-    accel1=-(G/RADIUS1)*sin(theta1)-accel0*INFLUENCE0
     # Change velocity according to accelleration
     velocity1+=accel1*DT
     # Change angle according to (updated) velocity
     theta1-=velocity1
 
-    # Calculate accelleration due to gravity
-    accel2=-(G/RADIUS2)*sin(theta2)-accel1*INFLUENCE1
     # Change velocity according to accelleration
     velocity2+=accel2*DT
     # Change angle according to (updated) velocity
     theta2-=velocity2
 
-    # Calculate accelleration due to gravity
-    accel3=-(G/RADIUS3)*sin(theta3)-accel2*INFLUENCE2
     # Change velocity according to accelleration
     velocity3+=accel3*DT
     # Change angle according to (updated) velocity
     theta3-=velocity3
 
+    # Change velocity according to accelleration
+    velocity4+=accel4*DT
+    # Change angle according to (updated) velocity
+    theta4-=velocity4
+
     #calculate new position for the ball
-    stopx0=STARTX0+int(RADIUS0*sin(theta0))
-    stopy0=STARTY0-int(RADIUS0*cos(theta0))
+    stopx0=STARTX0+int(pd.radius0*sin(theta0))
+    stopy0=STARTY0-int(pd.radius0*cos(theta0))
 
-    stopx1=stopx0+int(RADIUS1*sin(theta1))
-    stopy1=stopy0-int(RADIUS1*cos(theta1))
+    stopx1=stopx0+int(pd.radius1*sin(theta1))
+    stopy1=stopy0-int(pd.radius1*cos(theta1))
 
-    stopx2=stopx1+int(RADIUS2*sin(theta2))
-    stopy2=stopy1-int(RADIUS2*cos(theta2))
+    stopx2=stopx1+int(pd.radius2*sin(theta2))
+    stopy2=stopy1-int(pd.radius2*cos(theta2))
 
-    stopx3=stopx2+int(RADIUS3*sin(theta3))
-    stopy3=stopy2-int(RADIUS3*cos(theta3))
+    stopx3=stopx2+int(pd.radius3*sin(theta3))
+    stopy3=stopy2-int(pd.radius3*cos(theta3))
+
+    stopx4=stopx3+int(pd.radius4*sin(theta4))
+    stopy4=stopy3-int(pd.radius4*cos(theta4))
 
     #draw new pendulum
     pygame.gfxdraw.box(ball, pygame.Rect(0,0,WIDTH,HEIGHT), (255,255,255,3))
-    pygame.draw.circle(ball, twhcolors.GREEN, (stopx3, stopy3), 5, 0)
+    pygame.draw.circle(ball, twhcolors.GREEN, (stopx4, stopy4), 5, 0)
     screen.blit(ball, [0,0])
 
     pygame.draw.line(screen, twhcolors.BLUE, (STARTX0, STARTY0), (stopx0, stopy0))
@@ -183,6 +166,8 @@ while True:
     pygame.draw.circle(screen, twhcolors.RED, (stopx1, stopy1), 5, 0)
     pygame.draw.line(screen, twhcolors.BLUE, (stopx2, stopy2), (stopx3, stopy3))
     pygame.draw.circle(screen, twhcolors.RED, (stopx2, stopy2), 5, 0)
+    pygame.draw.line(screen, twhcolors.BLUE, (stopx3, stopy3), (stopx4, stopy4))
+    pygame.draw.circle(screen, twhcolors.RED, (stopx3, stopy3), 5, 0)
     pygame.draw.circle(screen, twhcolors.WHITE, (STARTX0, STARTY0), 5, 0)
 
     #update display
