@@ -30,3 +30,4 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 
 ## Auxiliary files
 * [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values and color cycling functions (status: release)
+* [getworkingpath.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/getworkingpath.py "getworkingpath.py") - Give the correct path to the working directory (status: release)
