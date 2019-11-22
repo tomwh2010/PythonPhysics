@@ -4,9 +4,6 @@
 import pygame, sys
 from pygame.locals import *
 
-#Frames pr second
-FPS=40
-
 #window size
 WIDTH=400
 HEIGHT=420
@@ -25,9 +22,6 @@ screen.fill(pygame.Color("gray69"))
 clock=pygame.time.Clock()
 
 while True:
-    #limit updates to FPS
-    clock.tick(FPS)
-
     #get events from the event queue
     for event in pygame.event.get():
         if event.type == QUIT:
