@@ -20,3 +20,13 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - Ball moves vertical (status: release)
 * [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - Ball moves at an angle (status: release)
 * [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - Animation with lines (status: release)
+
+## Circular motion
+* [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
+* [spiral.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral.py "spiral.py") - Spiral is a ball that moves in a circle with increasing/decreasing radius (status: release)
+* [spiral2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/spiral2.py "spiral2.py") - A stranger form of spiral (status: release)
+* [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: release)
+* [clock2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock2.py "clock2.py") - Analog clock - smooth version (status: release)
+
+## Auxiliary files
+* [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values and color cycling functions (status: release)
