@@ -37,6 +37,8 @@ screen.fill(GRAY)
 
 # creates a clock
 clock=pygame.time.Clock()
+
+#draw only once in the main loop
 running=True
 
 while True:
