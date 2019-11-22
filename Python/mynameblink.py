@@ -1,5 +1,8 @@
 #Description
-#Draw a simple blinking string
+#Make your name blink
+#Part of the pygame series at https://github.com/tomwh2010/PythonPhysics
+#Public domain by tomwh2010@hotmail.com
+
 import pygame, sys
 from pygame.locals import *
 

@@ -1,5 +1,8 @@
 #Description
-#Draw a simple string
+#Displaying your name at center
+#Part of the pygame series at https://github.com/tomwh2010/PythonPhysics
+#Public domain by tomwh2010@hotmail.com
+
 import pygame, sys
 from pygame.locals import *
 
