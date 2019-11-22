@@ -1,7 +1,7 @@
 # PythonPhysics
 Python, Pygame and Physics
 
-Animation of physical objects, events and such.
+Animation of physical objects, games and such.
 
 Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equations have been checked out... but, if they are still wrong, then drop me a line.
 # Description of each python file
@@ -11,6 +11,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [myname.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/myname.py "myname.py") - Displaying your name at center (status: release)
 * [mynameblink.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mynameblink.py "mynameblink.py") - Make your name blink (status: release)
 * [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects (status: release)
+* [rainbow.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/rainbow.py "rainbow.py") - Draw a rainbow using circles (status: release)
 * [mouse.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mouse.py "mouse.py") - Mouseclick on a square; change color according to state (status: release)
 
 ## Linear motion
@@ -28,6 +29,10 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [clock.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock.py "clock.py") - Analog clock (status: release)
 * [clock2.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/clock2.py "clock2.py") - Analog clock - smooth version (status: release)
 
+## Games
+* [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
+
 ## Auxiliary files
 * [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values and color cycling functions (status: release)
+* [twhwindow.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhwindow.py "twhwindow.py") - Misc elements; infobox etc (status: beta)
 * [getworkingpath.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/getworkingpath.py "getworkingpath.py") - Give the correct path to the working directory (status: release)

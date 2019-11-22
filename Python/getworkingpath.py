@@ -5,7 +5,7 @@
 #
 #usage:
 #from getworkingpath import *
-#filename=getworkingpath()+"/fakenews1.wav"
+#filename=getworkingpath()+"/mytext.txt"
 #
 #Part of the pygame series at https://github.com/tomwh2010/PythonPhysics
 #Public domain by tomwh2010@hotmail.com
