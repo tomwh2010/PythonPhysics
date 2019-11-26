@@ -1,6 +1,5 @@
 #Description
 #Animation with objects that fades to the background
-#Using gfxdraw to make the screen fade to the background
 #Part of the pygame series at https://github.com/tomwh2010/PythonPhysics
 #Public domain by tomwh2010@hotmail.com
 
