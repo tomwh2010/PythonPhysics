@@ -21,7 +21,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [vertical.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/vertical.py "vertical.py") - Ball moves vertical (status: release)
 * [angle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/angle.py "angle.py") - Ball moves at an angle (status: release)
 * [lines.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lines.py "lines.py") - Animation with lines (status: release)
-* [tuttifrutti.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/tuttifrutti.py "tuttifrutti.py") - Animation with objects that fades to the background (status: release)
+* [tuttifruttifade.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/tuttifruttifade.py "tuttifruttifade.py") - Animation with objects that fades to the background (status: release)
 
 ## Circular motion
 * [circle.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/circle.py "circle.py") - Make a ball move in a circle (status: release)
