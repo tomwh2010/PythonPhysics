@@ -54,7 +54,7 @@ while True:
     #if we're up and running
     if running:
         size=200
-        #draw circles with decreasing circles
+        #draw circles with decreasing radius
         #if the last circles color is the same as the background then
         #we have a nice rainbow
         for i in range(8):
