@@ -13,6 +13,7 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 * [objects.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/objects.py "objects.py") - Displaying different type of objects (status: release)
 * [rainbow.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/rainbow.py "rainbow.py") - Draw a rainbow using circles (status: release)
 * [mouse.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/mouse.py "mouse.py") - Mouseclick on a square; change color according to state (status: release)
+* [fullscreen.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/fullscreen.py "fullscreen.py") - Fullscreen game (status: release)
 
 ## Linear motion
 * [movetheball.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/movetheball.py "movetheball.py") - Move a ball around with UP/DOWN/LEFT/RIGHT once pr click (status: release)
