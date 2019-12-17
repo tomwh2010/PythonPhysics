@@ -4,6 +4,12 @@ Python, Pygame and Physics
 Animation of physical objects, games and such.
 
 Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equations have been checked out... but, if they are still wrong, then drop me a line.
+
+Regarding status:
+Alpha: work in progress
+Beta: Nearly there
+Release: So done with that example
+
 # Description of each python file
 
 ## Introduction
@@ -33,6 +39,11 @@ Disclaimer: I am by no means a physicist. But I am a progammer. Most of the equa
 
 ## Games
 * [conway.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/conway.py "conway.py") - Conway's Game of Life (status: release)
+
+## Lindenmayer systems
+A description of Lindenmayer systems can be found here: [https://en.wikipedia.org/wiki/L-system](https://en.wikipedia.org/wiki/L-system)
+* [lsystem/lsystem.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lsystem/lsystem.py "lsystem/lsystem.py") - Drawing Lindenmayer systems (status: Beta)
+* [lsystem/dragon.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/lsystem/dragon.py "lsystem/lsystem.py") - Drawing Lindenmayer systems; Dragon curve (status: Beta)
 
 ## Auxiliary files
 * [twhcolors.py](https://github.com/tomwh2010/PythonPhysics/blob/master/Python/twhcolors.py "twhcolors.py") - Predefined color values and color cycling functions (status: release)

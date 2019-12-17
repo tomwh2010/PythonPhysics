@@ -31,6 +31,7 @@ myfont=pygame.font.SysFont('Times New Roman', 24)
 
 #create text buffer
 strBuffer="My name is Tom"
+
 #render buffer as picture
 textsurface=myfont.render(strBuffer, 1, pygame.Color("black"))
 
