@@ -6,7 +6,7 @@
 import pygame, sys
 from pygame.locals import *
 import random
-import pygame.gfxdraw
+import pygame.gfxdraw #important if fading is required
 
 #Frames pr second
 FPS=24

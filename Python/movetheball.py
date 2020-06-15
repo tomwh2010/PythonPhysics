@@ -27,6 +27,18 @@ pygame.init()
 screen=pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Move a ball')
 
+# you have to call this at the start if you want to use this module.
+pygame.font.init()
+
+#choose font for later use
+myfont=pygame.font.SysFont('Times New Roman', 24)
+
+#create text buffer
+strBuffer="Move cursor with arrow keys"
+
+#render buffer as picture
+textsurface=myfont.render(strBuffer, 1, pygame.Color("black"))
+
 # creates a clock
 clock=pygame.time.Clock()
 
@@ -68,6 +80,9 @@ while True:
                 # moves the blue circle 10 pixels to the right
                 myball[0]+=10
 
+    #paint picture to screen at location 130,180
+    screen.blit(textsurface,(10, 10))
+    
     #circle(screen, color, coords(x,y), radius, fillstyle
     pygame.draw.circle(screen, SHAPE_COLOR, myball, 10, FILLSTYLE)
 

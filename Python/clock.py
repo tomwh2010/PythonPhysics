@@ -1,6 +1,6 @@
 #Description
 #Analog clock
-#The difference between these two versions is the use of
+#The difference between these two versions on this site is the use of
 #either localtime() or datetime.datetime.now()
 #Demonstrates polar to cartesian conversion
 #https://www.mathsisfun.com/polar-cartesian-coordinates.html
